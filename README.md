@@ -91,6 +91,9 @@ With **ROC-AUC = 0.97**, the Isolation Forest model demonstrates excellent discr
 ---
 
 ## Project Structure
+
+
+```
 boiler-efficiency-anomaly-detection/
 │
 ├── 01_problem_definition/              # Phase 01: Problem Definition
@@ -493,6 +496,8 @@ boiler-efficiency-anomaly-detection/
 ├── .gitignore
 ├── CONTRIBUTING.md
 └── CHANGELOG.md
+```
+ 
 ---
 
 ## Quick Start
