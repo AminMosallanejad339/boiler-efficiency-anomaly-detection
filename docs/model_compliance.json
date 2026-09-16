@@ -1,0 +1,26 @@
+{
+  "Data_Privacy": {
+    "Status": "COMPLIANT",
+    "Note": "No PII in data"
+  },
+  "Data_License": {
+    "Status": "REVIEW_NEEDED",
+    "Note": "Kaggle license unspecified - educational use only"
+  },
+  "Model_Transparency": {
+    "Status": "COMPLIANT",
+    "Note": "Model Card and Documentation provided"
+  },
+  "Reproducibility": {
+    "Status": "COMPLIANT",
+    "Note": "Random seed fixed, all artifacts saved"
+  },
+  "Fairness": {
+    "Status": "COMPLIANT",
+    "Note": "Model is FAIR across shifts"
+  },
+  "Security": {
+    "Status": "COMPLIANT",
+    "Note": "No external API calls, local model"
+  }
+}

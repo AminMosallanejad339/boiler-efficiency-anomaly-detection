@@ -1,0 +1,14 @@
+Parameter,Value
+Best_Feature_Set,Raw_Only
+N_Features,4
+Best_n_estimators,300
+Best_max_depth,10
+Best_min_samples_split,2
+Best_min_samples_leaf,4
+Best_class_weight,balanced_subsample
+Val_F1,1.0
+Val_Precision,1.0
+Val_Recall,1.0
+Test_F1,1.0
+Test_Precision,1.0
+Test_Recall,1.0

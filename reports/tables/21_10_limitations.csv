@@ -1,0 +1,11 @@
+ID,Category,Limitation,Impact,Mitigation
+LIM-01,Performance,F1 = 0.4437 (not perfect),HIGH,Use ensemble or redefine Anomaly
+LIM-02,Recall,Recall = 0.5591 (55.9% detected),HIGH,Lower threshold or use class weights
+LIM-03,Precision,Precision = 0.3679 (36.8% correct),MEDIUM,Raise threshold or add features
+LIM-04,Bias,F1 varies by month (Std = 0.0877),MEDIUM,Add temporal features
+LIM-05,Fairness,F1 varies by shift (Range = 0.1259),LOW,Add shift-specific features
+LIM-06,Robustness,F1 Std across seeds = 0.0356,LOW,Use more estimators or ensemble
+LIM-07,Data Leakage,RF with Raw_Only achieves F1=1.0 (Leakage),HIGH,Report both Leakage and Realistic results
+LIM-08,Method,Isolation Forest is Unsupervised (no labels),MEDIUM,Combine with Supervised when labels available
+LIM-09,Features,Only 4 raw anomaly features,MEDIUM,Add more sensor features
+LIM-10,Data,63:1 class imbalance,HIGH,Use anomaly-specific methods

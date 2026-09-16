@@ -1,0 +1,18 @@
+{
+  "Iteration": 10.0,
+  "Learning_Rate": 0.002347,
+  "Batch_Size": 256.0,
+  "L2": 1.9777828512462736e-07,
+  "Dropout_1": 0.243,
+  "Dropout_2": 0.146,
+  "Dropout_3": 0.345,
+  "Hidden_1": 128.0,
+  "Hidden_2": 32.0,
+  "Hidden_3": 64.0,
+  "Patience": 20.0,
+  "Epochs_Run": 23.0,
+  "Best_Epoch": 3.0,
+  "Best_Val_Loss": 0.062833,
+  "Best_Val_Acc": 0.988513,
+  "Train_Time_s": 8.08
+}

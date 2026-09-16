@@ -1,0 +1,3 @@
+Column,Bins,Strategy,Bin_Counts
+Flue_gas_temperature_,5,quantile,"{0: 10018, 1: 10018, 2: 10018, 3: 10018, 4: 10019}"
+Boiler_oxygen_level_,5,quantile,"{0: 10018, 1: 10018, 2: 10018, 3: 10018, 4: 10019}"

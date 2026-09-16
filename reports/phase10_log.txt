@@ -1,0 +1,190 @@
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07] PHASE 10: LOSS / OBJECTIVE FUNCTION
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07] PHASE 10: LOSS / OBJECTIVE FUNCTION
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.1: LOSS FUNCTION SELECTION
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07] 
+  Anomaly Detection (Binary):
+[2026-09-16 13:13:07]     Primary Loss: Binary Crossentropy
+[2026-09-16 13:13:07]     Formula: L = -[y*log(p) + (1-y)*log(1-p)]
+[2026-09-16 13:13:07]     Rationale: Standard for binary classification
+[2026-09-16 13:13:07]     Alternatives:
+[2026-09-16 13:13:07]       - Focal Loss (for extreme imbalance)
+[2026-09-16 13:13:07]       - Weighted BCE (with class weights)
+[2026-09-16 13:13:07]       - Hinge Loss (for SVM-like)
+[2026-09-16 13:13:07] 
+  Binned Classification (3-class):
+[2026-09-16 13:13:07]     Primary Loss: Categorical Crossentropy
+[2026-09-16 13:13:07]     Formula: L = -sum(y_i * log(p_i))
+[2026-09-16 13:13:07]     Rationale: Standard for multi-class classification
+[2026-09-16 13:13:07]     Alternatives:
+[2026-09-16 13:13:07]       - Sparse Categorical Crossentropy
+[2026-09-16 13:13:07]       - Kullback-Leibler Divergence
+[2026-09-16 13:13:07] 
+  Regression (deprecated):
+[2026-09-16 13:13:07]     Primary Loss: MSE
+[2026-09-16 13:13:07]     Formula: L = mean((y - y_pred)^2)
+[2026-09-16 13:13:07]     Rationale: Not used (regression failed)
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.2: COST FUNCTION DEFINITION
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07]   Cost Function: Average loss over all training samples
+[2026-09-16 13:13:07]   Formula: J(θ) = (1/N) * sum(L(y_i, f(x_i; θ)))
+[2026-09-16 13:13:07]   Components:
+[2026-09-16 13:13:07]     N: Number of training samples
+[2026-09-16 13:13:07]     L: Per-sample loss (BCE or CE)
+[2026-09-16 13:13:07]     f(x_i; θ): Model prediction
+[2026-09-16 13:13:07]     θ: Model parameters
+[2026-09-16 13:13:07]   Optimization Goal: Minimize J(θ) w.r.t. θ
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.3: OBJECTIVE FUNCTION FORMULATION
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07]   Total Objective: J_total = J_data + λ * J_reg
+[2026-09-16 13:13:07]   Data Loss: Binary Crossentropy or Categorical Crossentropy
+[2026-09-16 13:13:07]   Regularization: L2 (weight decay) + Dropout
+[2026-09-16 13:13:07]   λ (Lambda): 1e-4 (L2 regularization strength)
+[2026-09-16 13:13:07]   Formula:
+[2026-09-16 13:13:07]     Anomaly: J = BCE(y, y_pred) + λ * sum(||W||^2)
+[2026-09-16 13:13:07]     Binned: J = CE(y, y_pred) + λ * sum(||W||^2)
+[2026-09-16 13:13:07]   Rationale:
+[2026-09-16 13:13:07]     - Data loss ensures model fits training data
+[2026-09-16 13:13:07]     - Regularization prevents overfitting
+[2026-09-16 13:13:07]     - λ controls trade-off between fit and complexity
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.4: PENALTY TERM DESIGN
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07]   Type: L2 Regularization (Ridge)
+[2026-09-16 13:13:07]   Formula: R(W) = λ * sum(W^2)
+[2026-09-16 13:13:07]   Applied To: All Dense layers
+[2026-09-16 13:13:07]   λ Value: 1e-4
+[2026-09-16 13:13:07]   Rationale:
+[2026-09-16 13:13:07]     - Penalizes large weights
+[2026-09-16 13:13:07]     - Reduces model complexity
+[2026-09-16 13:13:07]     - Prevents overfitting
+[2026-09-16 13:13:07]     - Smooth optimization landscape
+[2026-09-16 13:13:07]   Alternatives:
+[2026-09-16 13:13:07]     L1: Sparse weights, feature selection
+[2026-09-16 13:13:07]     Elastic Net: Combines L1 and L2
+[2026-09-16 13:13:07]     No Penalty: Higher overfitting risk
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.5: REGULARIZATION TERM DESIGN
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07]   Weight Regularization:
+[2026-09-16 13:13:07]     Type: L2
+[2026-09-16 13:13:07]     λ: 1e-4
+[2026-09-16 13:13:07]     Applied: Dense layers
+[2026-09-16 13:13:07]   Activation Regularization:
+[2026-09-16 13:13:07]     Type: Dropout
+[2026-09-16 13:13:07]     Rates: 0.3, 0.3, 0.2
+[2026-09-16 13:13:07]     Applied: After BatchNorm
+[2026-09-16 13:13:07]   Early Stopping:
+[2026-09-16 13:13:07]     Monitor: val_loss
+[2026-09-16 13:13:07]     Patience: 10
+[2026-09-16 13:13:07]     Restore Best: True
+[2026-09-16 13:13:07]   Learning Rate Schedule:
+[2026-09-16 13:13:07]     Type: ReduceLROnPlateau
+[2026-09-16 13:13:07]     Monitor: val_loss
+[2026-09-16 13:13:07]     Patience: 5
+[2026-09-16 13:13:07]     Factor: 0.5
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.6: DIVERGENCE SELECTION
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07]   Anomaly Detection:
+[2026-09-16 13:13:07]     Divergence: Binary Crossentropy
+[2026-09-16 13:13:07]     Origin: Bernoulli distribution
+[2026-09-16 13:13:07]     Formula: KL(p || q) where p=true, q=predicted
+[2026-09-16 13:13:07]   Binned Classification:
+[2026-09-16 13:13:07]     Divergence: Categorical Crossentropy
+[2026-09-16 13:13:07]     Origin: Categorical distribution
+[2026-09-16 13:13:07]     Formula: KL(p || q) where p=true, q=predicted
+[2026-09-16 13:13:07]   General:
+[2026-09-16 13:13:07]     Note: Crossentropy = KL divergence + entropy of true distribution
+[2026-09-16 13:13:07]     Since entropy is constant: Minimizing CE = minimizing KL
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.7: RISK FORMULATION
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07]   True Risk: R(θ) = E[L(y, f(x; θ))] over true distribution P(x,y)
+[2026-09-16 13:13:07]   Empirical Risk: R_emp(θ) = (1/N) * sum(L(y_i, f(x_i; θ)))
+[2026-09-16 13:13:07]   Regularized Risk: R_reg(θ) = R_emp(θ) + λ * R(W)
+[2026-09-16 13:13:07]   Goal: Minimize R_reg(θ) w.r.t. θ
+[2026-09-16 13:13:07]   Generalization: True risk ≈ Empirical risk + Regularization
+[2026-09-16 13:13:07]   Trade-off: Bias-Variance Trade-off controlled by λ
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.8: EMPIRICAL RISK DEFINITION
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07]   Anomaly Detection:
+[2026-09-16 13:13:07]     Formula: R_emp = -(1/N) * sum[y*log(p) + (1-y)*log(1-p)]
+[2026-09-16 13:13:07]     Class Weight: w1 = 63.57, w0 = 1.0 (for imbalance)
+[2026-09-16 13:13:07]     Weighted Formula: R_emp = -(1/N) * sum[w_y * (y*log(p) + (1-y)*log(1-p))]
+[2026-09-16 13:13:07]   Binned Classification:
+[2026-09-16 13:13:07]     Formula: R_emp = -(1/N) * sum[sum(y_i * log(p_i))]
+[2026-09-16 13:13:07]     Class Weight: None (balanced classes)
+[2026-09-16 13:13:07]   Batch Processing:
+[2026-09-16 13:13:07]     Batch Size: 256 (to be tuned in Phase 13)
+[2026-09-16 13:13:07]     Mini-batch Risk: Average over batch samples
+[2026-09-16 13:13:07] 
+======================================================================
+[2026-09-16 13:13:07] STAGE 10.9: CUSTOM LOSS DESIGN
+[2026-09-16 13:13:07] ======================================================================
+[2026-09-16 13:13:07]   Designing Focal Loss for Anomaly Detection...
+[2026-09-16 13:13:07]   (Focal Loss helps with extreme class imbalance)
+[2026-09-16 13:13:08] 
+  Class Distribution:
+[2026-09-16 13:13:08]     Negative (Normal): 34520
+[2026-09-16 13:13:08]     Positive (Anomaly): 543
+[2026-09-16 13:13:08]     Imbalance Ratio: 63.57:1
+[2026-09-16 13:13:08] 
+  Class Weights: {0: 1.0, 1: np.float64(63.57274401473296)}
+[2026-09-16 13:13:08] 
+  Focal Loss Parameters:
+[2026-09-16 13:13:08]     Alpha (balance factor): 0.25
+[2026-09-16 13:13:08]     Gamma (focusing parameter): 2.0
+[2026-09-16 13:13:08]     Rationale: Focus on hard examples
+[2026-09-16 13:13:08] 
+  [OK] Saved: 10_9_custom_loss.csv
+[2026-09-16 13:13:08] 
+======================================================================
+[2026-09-16 13:13:08] STAGE 10.10: LOSS WEIGHTING
+[2026-09-16 13:13:08] ======================================================================
+[2026-09-16 13:13:08]   Anomaly Detection:
+[2026-09-16 13:13:08]     Class Weight:
+[2026-09-16 13:13:08]       0: 1.0
+[2026-09-16 13:13:08]       1: 63.57274401473296
+[2026-09-16 13:13:08]     Rationale: Compensate for 63:1 imbalance
+[2026-09-16 13:13:08]     Effect: Model focuses on anomaly class
+[2026-09-16 13:13:08]     Trade-off: Higher Recall, Lower Precision
+[2026-09-16 13:13:08]   Binned Classification:
+[2026-09-16 13:13:08]     Class Weight: None (balanced)
+[2026-09-16 13:13:08]     Rationale: Classes already balanced (33/33/33)
+[2026-09-16 13:13:08]   Multi-Task Weighting:
+[2026-09-16 13:13:08]     Note: If training both tasks jointly
+[2026-09-16 13:13:08]     Anomaly Weight: 0.7
+[2026-09-16 13:13:08]     Binned Weight: 0.3
+[2026-09-16 13:13:08]     Rationale: Prioritize anomaly detection (main goal)
+[2026-09-16 13:13:08] 
+======================================================================
+[2026-09-16 13:13:08] VISUALIZING LOSS FUNCTIONS
+[2026-09-16 13:13:08] ======================================================================
+[2026-09-16 13:13:08]   [OK] Saved: 10_loss_functions.png
+[2026-09-16 13:13:08] 
+  Testing Custom Losses...
+[2026-09-16 13:13:08]     Focal Loss: 0.020696
+[2026-09-16 13:13:08]     Weighted BCE: 9.947206
+[2026-09-16 13:13:08]     Standard BCE: 0.308093
+[2026-09-16 13:13:08]   [OK] Saved: 10_loss_summary.csv
+[2026-09-16 13:13:08] 
+======================================================================
+[2026-09-16 13:13:08] PHASE 10 COMPLETE!
+[2026-09-16 13:13:08] ======================================================================

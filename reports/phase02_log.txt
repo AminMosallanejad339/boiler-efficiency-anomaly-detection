@@ -1,0 +1,88 @@
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07] PHASE 02: DATA COLLECTION & PREPARATION
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07] STAGE 2.1: DATA COLLECTION
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07]   Source: Kaggle - Power Plant Data: Steam Turbine & Boiler Metrics
+[2026-09-16 11:58:07]   URL: https://www.kaggle.com/datasets/pavanjitsubash/power-plant-data-steam-turbine-and-boiler-metrics
+[2026-09-16 11:58:07]   Author: Pavanjit Subash
+[2026-09-16 11:58:07]   Data Type: Time Series (10-minute interval)
+[2026-09-16 11:58:07]   Time Range: January 2022
+[2026-09-16 11:58:07]   Records: 50,000+ rows
+[2026-09-16 11:58:07]   Features: 58 operational parameters
+[2026-09-16 11:58:07]   File Format: CSV
+[2026-09-16 11:58:07]   File Size: 50.64 MB
+[2026-09-16 11:58:07]   License: Unspecified
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07] STAGE 2.2: DATA ACQUISITION
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07]   [OK] Data loaded: 50091 rows x 55 columns
+[2026-09-16 11:58:07]   Memory: 23.87 MB
+[2026-09-16 11:58:07]   First 10 columns: ['Timestamp', 'Main steam flow (t/h)', 'Main steam temperature (boiler side) (℃)', 'Main steam pressure (boiler side) (Mpa)', 'Reheat steam temperature (boiler side) (℃)', 'Superheater desuperheating water flow (t/h)', 'Reheater desuperheating water flow (t/h)', 'Feedwater temperature (℃)', 'Feedwater flow (t/h)', 'Flue gas temperature (℃)']
+[2026-09-16 11:58:07]   Last 5 columns: ['NTHR (Kcal/Kwh)', 'NPHR (Kcal/Kwh)', 'Gross Load (MW)', 'Nett Load (MW)', 'HHV (Kcal/Kg)']
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07] STAGE 2.3: DATA INTEGRATION
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07]   Single-source dataset - no integration required
+[2026-09-16 11:58:07]   Duplicate columns: 0
+[2026-09-16 11:58:07]   Duplicate rows: 0
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07] STAGE 2.4: DATA CLEANING
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07]   [OK] Renamed 54 columns
+[2026-09-16 11:58:07]   Time columns detected: ['Timestamp']
+[2026-09-16 11:58:07]   [OK] Converted 'Timestamp' to datetime and sorted chronologically
+[2026-09-16 11:58:07]   [OK] No constant columns found
+[2026-09-16 11:58:07]   Final shape after cleaning: (50091, 55)
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07] STAGE 2.5: DATA VALIDATION
+[2026-09-16 11:58:07] ======================================================================
+[2026-09-16 11:58:07]   Numeric columns: 54
+[2026-09-16 11:58:08]   [OK] Saved validation stats: 02_05_validation_stats.csv
+[2026-09-16 11:58:08]   [WARNING] Columns with negative values:
+[2026-09-16 11:58:08]     Reheater_desuperheating_water_flow_th: 142 negative values
+[2026-09-16 11:58:08]     Condenser_vacuum_kPa: 50091 negative values
+[2026-09-16 11:58:08]     CO_mgm3: 198 negative values
+[2026-09-16 11:58:08]     Pressure_Kpa: 50091 negative values
+[2026-09-16 11:58:08]     Dust_mgm3: 31 negative values
+[2026-09-16 11:58:08]     APH_Leakage_: 388 negative values
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08] STAGE 2.6: MISSING VALUE HANDLING
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08]   [OK] No missing values found
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08] STAGE 2.7: OUTLIER DETECTION
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08]   [OK] Saved: 02_07_outlier_detection.csv
+[2026-09-16 11:58:08]   Columns analyzed: 54
+[2026-09-16 11:58:08]   Columns with IQR outliers: 54
+[2026-09-16 11:58:08]   Columns with Z-Score outliers: 54
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08] STAGE 2.8: OUTLIER TREATMENT
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08]   [OK] Winsorization applied to 54 columns (threshold: <5% outliers)
+[2026-09-16 11:58:08]   Strategy: IQR capping at 1.5 * IQR
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08] STAGE 2.9: NOISE REDUCTION
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08]   [OK] Rolling-mean smoothing applied to 54 high-variance columns
+[2026-09-16 11:58:08]   Window: 3 samples = 30 minutes (centered)
+[2026-09-16 11:58:08]   Original columns preserved
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08] STAGE 2.10: DATA DOCUMENTATION
+[2026-09-16 11:58:08] ======================================================================
+[2026-09-16 11:58:08]   [OK] Saved: 02_10_data_dictionary.csv
+[2026-09-16 11:58:08]   [OK] Saved: 02_10_data_quality_report.csv
+[2026-09-16 11:58:08]     Original Shape: 50091 x 55
+[2026-09-16 11:58:08]     Final Shape: 50091 x 109
+[2026-09-16 11:58:08]     Original Missing: 0
+[2026-09-16 11:58:08]     Final Missing: 0
+[2026-09-16 11:58:08]     Memory (MB): 41.66
+[2026-09-16 11:58:08]     Numeric Columns: 108
+[2026-09-16 11:58:08]     Non-Numeric Columns: 1
+[2026-09-16 11:58:08]     Processing Date: 2026-09-16 11:58:08
+[2026-09-16 11:58:12] ======================================================================
+[2026-09-16 11:58:12] [OK] FINAL DATASET SAVED: E:\DESKTOP\boiler-efficiency-anomaly-detection\data\processed\industrial_dataset_cleaned.csv
+[2026-09-16 11:58:12] [OK] Final shape: (50091, 109)
+[2026-09-16 11:58:12] ======================================================================

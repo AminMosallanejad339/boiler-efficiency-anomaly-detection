@@ -1,0 +1,290 @@
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11] PHASE 09: ARCHITECTURE DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11] PHASE 09: ARCHITECTURE DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   Architecture Type: Multi-Layer Perceptron (MLP)
+[2026-09-16 13:11:11]   Purpose:
+[2026-09-16 13:11:11]     - Compare with tree-based models (AdaBoost)
+[2026-09-16 13:11:11]     - Test if Neural Network can learn patterns
+[2026-09-16 13:11:11]     - Provide a Deep Learning baseline
+[2026-09-16 13:11:11]   Tasks:
+[2026-09-16 13:11:11]     Task 1: Anomaly Detection (Binary Classification)
+[2026-09-16 13:11:11]     Task 2: Binned Classification (3-class)
+[2026-09-16 13:11:11]   Design Principles:
+[2026-09-16 13:11:11]     - Progressive layer reduction (128 -> 64 -> 32)
+[2026-09-16 13:11:11]     - Batch Normalization for stable training
+[2026-09-16 13:11:11]     - Dropout for regularization
+[2026-09-16 13:11:11]     - ReLU activation for hidden layers
+[2026-09-16 13:11:11]     - Sigmoid/Softmax for output
+[2026-09-16 13:11:11]   Framework: TensorFlow / Keras
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.2: LAYER DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   Input Layer:
+[2026-09-16 13:11:11]     Size: n_features (78 or 79)
+[2026-09-16 13:11:11]     Description: One neuron per feature
+[2026-09-16 13:11:11]   Hidden Layer 1:
+[2026-09-16 13:11:11]     Neurons: 128
+[2026-09-16 13:11:11]     Activation: ReLU
+[2026-09-16 13:11:11]     Regularization: L2 (1e-4)
+[2026-09-16 13:11:11]     Rationale: Wide layer to capture complex patterns
+[2026-09-16 13:11:11]   Hidden Layer 2:
+[2026-09-16 13:11:11]     Neurons: 64
+[2026-09-16 13:11:11]     Activation: ReLU
+[2026-09-16 13:11:11]     Regularization: L2 (1e-4)
+[2026-09-16 13:11:11]     Rationale: Reduce dimensionality progressively
+[2026-09-16 13:11:11]   Hidden Layer 3:
+[2026-09-16 13:11:11]     Neurons: 32
+[2026-09-16 13:11:11]     Activation: ReLU
+[2026-09-16 13:11:11]     Regularization: L2 (1e-4)
+[2026-09-16 13:11:11]     Rationale: Further compression before output
+[2026-09-16 13:11:11]   Output Layer (Anomaly):
+[2026-09-16 13:11:11]     Neurons: 1
+[2026-09-16 13:11:11]     Activation: Sigmoid
+[2026-09-16 13:11:11]     Rationale: Binary classification
+[2026-09-16 13:11:11]   Output Layer (Binned):
+[2026-09-16 13:11:11]     Neurons: 3
+[2026-09-16 13:11:11]     Activation: Softmax
+[2026-09-16 13:11:11]     Rationale: Multi-class classification
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.3: BLOCK DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   Input Block:
+[2026-09-16 13:11:11]     Components:
+[2026-09-16 13:11:11]       - Input
+[2026-09-16 13:11:11]       - StandardScaler (external)
+[2026-09-16 13:11:11]     Purpose: Feature normalization
+[2026-09-16 13:11:11]   Feature Extraction Block:
+[2026-09-16 13:11:11]     Components:
+[2026-09-16 13:11:11]       - Dense(128) + ReLU
+[2026-09-16 13:11:11]       - BatchNormalization
+[2026-09-16 13:11:11]       - Dropout(0.3)
+[2026-09-16 13:11:11]     Purpose: Extract high-level features
+[2026-09-16 13:11:11]   Compression Block 1:
+[2026-09-16 13:11:11]     Components:
+[2026-09-16 13:11:11]       - Dense(64) + ReLU
+[2026-09-16 13:11:11]       - BatchNormalization
+[2026-09-16 13:11:11]       - Dropout(0.3)
+[2026-09-16 13:11:11]     Purpose: Compress features
+[2026-09-16 13:11:11]   Compression Block 2:
+[2026-09-16 13:11:11]     Components:
+[2026-09-16 13:11:11]       - Dense(32) + ReLU
+[2026-09-16 13:11:11]       - BatchNormalization
+[2026-09-16 13:11:11]       - Dropout(0.2)
+[2026-09-16 13:11:11]     Purpose: Further compression
+[2026-09-16 13:11:11]   Output Block:
+[2026-09-16 13:11:11]     Components:
+[2026-09-16 13:11:11]       - Dense(1 or 3)
+[2026-09-16 13:11:11]       - Sigmoid or Softmax
+[2026-09-16 13:11:11]     Purpose: Final prediction
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.4: CONNECTION DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   Type: Sequential (Fully Connected)
+[2026-09-16 13:11:11]   Data Flow: Input -> Block1 -> Block2 -> Block3 -> Output
+[2026-09-16 13:11:11]   Skip Connections: None (not needed for tabular data)
+[2026-09-16 13:11:11]   Rationale:
+[2026-09-16 13:11:11]     - Tabular data benefits from simple feedforward
+[2026-09-16 13:11:11]     - Skip connections add complexity without benefit
+[2026-09-16 13:11:11]     - Residual connections are for deep CNNs
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.5: ACTIVATION SELECTION
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   Hidden Layers:
+[2026-09-16 13:11:11]     Activation: ReLU
+[2026-09-16 13:11:11]     Formula: f(x) = max(0, x)
+[2026-09-16 13:11:11]     Rationale:
+[2026-09-16 13:11:11]       - Avoids vanishing gradient
+[2026-09-16 13:11:11]       - Computationally efficient
+[2026-09-16 13:11:11]       - Standard for MLPs
+[2026-09-16 13:11:11]   Output (Anomaly):
+[2026-09-16 13:11:11]     Activation: Sigmoid
+[2026-09-16 13:11:11]     Formula: f(x) = 1 / (1 + exp(-x))
+[2026-09-16 13:11:11]     Rationale: Binary classification, outputs probability
+[2026-09-16 13:11:11]   Output (Binned):
+[2026-09-16 13:11:11]     Activation: Softmax
+[2026-09-16 13:11:11]     Formula: f(x_i) = exp(x_i) / sum(exp(x_j))
+[2026-09-16 13:11:11]     Rationale: Multi-class, outputs probability distribution
+[2026-09-16 13:11:11]   Alternatives Considered:
+[2026-09-16 13:11:11]     LeakyReLU: Rejected: ReLU works well for this size
+[2026-09-16 13:11:11]     ELU: Rejected: Slower than ReLU
+[2026-09-16 13:11:11]     Tanh: Rejected: Vanishing gradient
+[2026-09-16 13:11:11]     Swish: Rejected: Marginal improvement, more computation
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.6: NORMALIZATION SELECTION
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   External Normalization:
+[2026-09-16 13:11:11]     Method: RobustScaler
+[2026-09-16 13:11:11]     Applied: Before feeding to NN
+[2026-09-16 13:11:11]     Rationale: Handles outliers, matches Phase 06 pipeline
+[2026-09-16 13:11:11]   Internal Normalization:
+[2026-09-16 13:11:11]     Method: BatchNormalization
+[2026-09-16 13:11:11]     Applied: After each Dense layer
+[2026-09-16 13:11:11]     Rationale:
+[2026-09-16 13:11:11]       - Stabilizes training
+[2026-09-16 13:11:11]       - Allows higher learning rates
+[2026-09-16 13:11:11]       - Reduces internal covariate shift
+[2026-09-16 13:11:11]   Alternatives Considered:
+[2026-09-16 13:11:11]     LayerNormalization: Rejected: Better for RNNs/Transformers
+[2026-09-16 13:11:11]     GroupNormalization: Rejected: Better for small batches
+[2026-09-16 13:11:11]     InstanceNormalization: Rejected: For style transfer
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.7: DROPOUT DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   Layer 1 Dropout:
+[2026-09-16 13:11:11]     Rate: 0.3
+[2026-09-16 13:11:11]     Rationale: High dropout for wide layer
+[2026-09-16 13:11:11]   Layer 2 Dropout:
+[2026-09-16 13:11:11]     Rate: 0.3
+[2026-09-16 13:11:11]     Rationale: Maintain regularization
+[2026-09-16 13:11:11]   Layer 3 Dropout:
+[2026-09-16 13:11:11]     Rate: 0.2
+[2026-09-16 13:11:11]     Rationale: Lower dropout before output
+[2026-09-16 13:11:11]   Output Layer:
+[2026-09-16 13:11:11]     Rate: 0.0
+[2026-09-16 13:11:11]     Rationale: No dropout on output
+[2026-09-16 13:11:11]   Total Regularization:
+[2026-09-16 13:11:11]     L2: 1e-4 on all Dense layers
+[2026-09-16 13:11:11]     Dropout: 0.3, 0.3, 0.2
+[2026-09-16 13:11:11]     EarlyStopping: patience=10
+[2026-09-16 13:11:11]     ReduceLROnPlateau: patience=5, factor=0.5
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.8: EMBEDDING DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   [INFO] No categorical features requiring embeddings
+[2026-09-16 13:11:11]   [INFO] All features are numeric (continuous)
+[2026-09-16 13:11:11]   [NOTE] If categorical features added later:
+[2026-09-16 13:11:11]     - Use Embedding layers for high-cardinality features
+[2026-09-16 13:11:11]     - Use OneHotEncoder for low-cardinality features
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.9: ATTENTION DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   [INFO] Attention not applicable for MLP on tabular data
+[2026-09-16 13:11:11]   [NOTE] Attention is for:
+[2026-09-16 13:11:11]     - Sequential data (Transformers, RNNs)
+[2026-09-16 13:11:11]     - Image data (Vision Transformers)
+[2026-09-16 13:11:11]     - Graph data (GAT)
+[2026-09-16 13:11:11]   [DECISION] Skip attention for this architecture
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] STAGE 9.10: OUTPUT HEAD DESIGN
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:11]   Anomaly Detection Head:
+[2026-09-16 13:11:11]     Neurons: 1
+[2026-09-16 13:11:11]     Activation: Sigmoid
+[2026-09-16 13:11:11]     Loss: Binary Crossentropy
+[2026-09-16 13:11:11]     Metric: F1-Score, Recall, Precision
+[2026-09-16 13:11:11]     Class Weight: Applied (63.57:1 imbalance)
+[2026-09-16 13:11:11]   Binned Classification Head:
+[2026-09-16 13:11:11]     Neurons: 3
+[2026-09-16 13:11:11]     Activation: Softmax
+[2026-09-16 13:11:11]     Loss: Categorical Crossentropy
+[2026-09-16 13:11:11]     Metric: F1-Macro, Accuracy
+[2026-09-16 13:11:11]     Class Weight: Not needed (balanced)
+[2026-09-16 13:11:11] 
+  Features for Anomaly MLP: 78
+[2026-09-16 13:11:11]   Features for Binned MLP: 79
+[2026-09-16 13:11:11] 
+======================================================================
+[2026-09-16 13:11:11] VISUALIZING ARCHITECTURES
+[2026-09-16 13:11:11] ======================================================================
+[2026-09-16 13:11:12]   [OK] Saved: 09_model_summaries.txt
+[2026-09-16 13:11:12] 
+  Anomaly MLP Summary:
+[2026-09-16 13:11:12]     Model: "Anomaly_MLP"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ dense (Dense)                        │ (None, 128)                 │          10,112 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization                  │ (None, 128)                 │             512 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 128)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 64)                  │           8,256 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_1                │ (None, 64)                  │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 32)                  │           2,080 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_2                │ (None, 32)                  │             128 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_2 (Dropout)                  │ (None, 32)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_3 (Dense)                      │ (None, 1)                   │              33 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 21,377 (83.50 KB)
+ Trainable params: 20,929 (81.75 KB)
+ Non-trainable params: 448 (1.75 KB)
+
+[2026-09-16 13:11:12] 
+  Binned MLP Summary:
+[2026-09-16 13:11:12]     Model: "Binned_MLP"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ dense_4 (Dense)                      │ (None, 128)                 │          10,240 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_3                │ (None, 128)                 │             512 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_3 (Dropout)                  │ (None, 128)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_5 (Dense)                      │ (None, 64)                  │           8,256 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_4                │ (None, 64)                  │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_4 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_6 (Dense)                      │ (None, 32)                  │           2,080 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_5                │ (None, 32)                  │             128 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_5 (Dropout)                  │ (None, 32)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_7 (Dense)                      │ (None, 3)                   │              99 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 21,571 (84.26 KB)
+ Trainable params: 21,123 (82.51 KB)
+ Non-trainable params: 448 (1.75 KB)
+
+[2026-09-16 13:11:12]   [OK] Saved: 09_architecture_design.png
+[2026-09-16 13:11:12]   [OK] Saved: anomaly_mlp_initial.keras
+[2026-09-16 13:11:12]   [OK] Saved: binned_mlp_initial.keras
+[2026-09-16 13:11:12]   [OK] Saved: 09_architecture_summary.csv
+[2026-09-16 13:11:12] 
+  Architecture Summary:
+[2026-09-16 13:11:12]     Architecture: MLP
+[2026-09-16 13:11:12]     Anomaly_Input: 78
+[2026-09-16 13:11:12]     Anomaly_Output: 1
+[2026-09-16 13:11:12]     Anomaly_Activation: Sigmoid
+[2026-09-16 13:11:12]     Binned_Input: 79
+[2026-09-16 13:11:12]     Binned_Output: 3
+[2026-09-16 13:11:12]     Binned_Activation: Softmax
+[2026-09-16 13:11:12]     Hidden_Layers: 128, 64, 32
+[2026-09-16 13:11:12]     Dropout: 0.3, 0.3, 0.2
+[2026-09-16 13:11:12]     BatchNorm: Yes
+[2026-09-16 13:11:12]     L2_Regularization: 1e-4
+[2026-09-16 13:11:12]     Total_Params_Anomaly: 21377
+[2026-09-16 13:11:12]     Total_Params_Binned: 21571
+[2026-09-16 13:11:12] 
+======================================================================
+[2026-09-16 13:11:12] PHASE 09 COMPLETE!
+[2026-09-16 13:11:12] ======================================================================

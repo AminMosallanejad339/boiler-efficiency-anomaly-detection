@@ -1,0 +1,11 @@
+Parameter,Value
+Final_Model,Isolation Forest (Tuned)
+F1,0.44375
+ROC_AUC,0.971015
+Precision,0.367876
+Recall,0.559055
+Type,Unsupervised
+Leakage,False
+N_Features,4
+Training_Time_s,1.4682
+Rationale,Best F1 among models without Data Leakage

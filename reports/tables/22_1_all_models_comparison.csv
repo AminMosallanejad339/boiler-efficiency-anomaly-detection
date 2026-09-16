@@ -1,0 +1,7 @@
+Model,Type,Feature_Set,N_Features,Training_Time_s,Inference_Time_s,F1,Precision,Recall,ROC_AUC,PR_AUC,MCC,Kappa,Leakage
+Isolation Forest (Tuned),Unsupervised,Raw_Only,4,1.4682,0.3904,0.44375,0.367876,0.559055,0.971015,0.35934,0.442083,0.432173,False
+Isolation Forest (Default),Unsupervised,Raw_Only,4,0.1577,0.0576,0.170847,0.093472,0.992126,0.950769,0.213511,0.277739,0.144416,False
+Random Forest (Raw_Only),Supervised,Raw_Only,4,0.6344,0.0513,1.0,1.0,1.0,1.0,1.0,1.0,1.0,True
+AdaBoost (Leaky),Supervised,Main_Plus_Raw,78,49.0167,0.6843,1.0,1.0,1.0,1.0,1.0,1.0,1.0,True
+MLP,Supervised,Main_Plus_Raw,78,,0.9578,0.0,0.0,0.0,0.51985,0.018514,0.0,0.0,False
+Dummy (All Normal),Baseline,Raw_Only,4,0.0,0.0,0.0,0.0,0.0,0.5,0.016902,0.0,0.0,False

@@ -1,0 +1,16 @@
+Parameter,Value
+Search_Method,Random Search
+N_Iterations,15
+Best_Iteration,10.0
+Best_Learning_Rate,0.002347
+Best_Batch_Size,256.0
+Best_L2,1.9777828512462736e-07
+Best_Dropout_1,0.243
+Best_Dropout_2,0.146
+Best_Dropout_3,0.345
+Best_Hidden_1,128.0
+Best_Hidden_2,32.0
+Best_Hidden_3,64.0
+Best_Patience,20.0
+Best_Val_Loss,0.062833
+Best_Val_Acc,0.988513

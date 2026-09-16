@@ -1,0 +1,25 @@
+Hypothesis,Test,Statistic,p_value,Reject_H0
+H1: Main_steam_flow_th vs Boiler_Eff_,Pearson,-0.005704,0.28546359551713474,False
+H1: Main_steam_temperature_boiler_side_ vs Boiler_Eff_,Pearson,-0.002332,0.6623314341566889,False
+H1: Main_steam_pressure_boiler_side_Mpa vs Boiler_Eff_,Pearson,0.006057,0.2567342209620416,False
+H1: Reheat_steam_temperature_boiler_side_ vs Boiler_Eff_,Pearson,0.003278,0.5393772116350439,False
+H1: Superheater_desuperheating_water_flow_th vs Boiler_Eff_,Pearson,-0.000126,0.9812411973551697,False
+H1: Reheater_desuperheating_water_flow_th vs Boiler_Eff_,Pearson,0.002889,0.5885108821673402,False
+H1: Feedwater_temperature_ vs Boiler_Eff_,Pearson,-0.005935,0.26644751002981015,False
+H1: Feedwater_flow_th vs Boiler_Eff_,Pearson,-0.010096,0.05868854760380931,False
+H1: Flue_gas_temperature_ vs Boiler_Eff_,Pearson,-0.003278,0.5393698160200336,False
+H1: Boiler_oxygen_level_ vs Boiler_Eff_,Pearson,-0.015863,0.0029728088943150864,True
+H1: Main_steam_temperature_turbine_side_ vs Boiler_Eff_,Pearson,-0.003679,0.4908959911424489,False
+H1: Main_steam_pressure_turbine_side_MPa vs Boiler_Eff_,Pearson,0.002836,0.5954007790844467,False
+H1: Reheat_steam_temperature_turbine_side_ vs Boiler_Eff_,Pearson,0.002847,0.5939852011009938,False
+H1: Reheat_steam_pressure_turbine_side_MPa vs Boiler_Eff_,Pearson,0.009541,0.07400358950047387,False
+H1: Control_stage_pressure_Mpa vs Boiler_Eff_,Pearson,-0.004487,0.4008023376534464,False
+H1: High_exhaust_pressure_Mpa vs Boiler_Eff_,Pearson,-0.014809,0.005551845320276591,True
+H1: Feedwater_pressure_MPa vs Boiler_Eff_,Pearson,0.00038,0.9432405037196882,False
+H1: Condenser_vacuum_kPa vs Boiler_Eff_,Pearson,0.012184,0.022524281540532303,True
+H1: Circulating_water_outlet_temperature_ vs Boiler_Eff_,Pearson,0.005968,0.2638122264225167,False
+H1: SO2_mgm3 vs Boiler_Eff_,Pearson,0.008695,0.10350314357232733,False
+H2: APH_Leakage_ (Normal vs Anomaly),T-Test,30.252064,1.7592087011299977e-198,True
+H2: CO_mgm3 (Normal vs Anomaly),T-Test,16.47066,1.0087044180094017e-60,True
+H2: Boiler_oxygen_level_ (Normal vs Anomaly),T-Test,-1.575547,0.11513914759632597,False
+H3: Boiler_Eff_ (Normal vs Anomaly),T-Test,3.099601,0.0019393477830603094,True

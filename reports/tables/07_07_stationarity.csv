@@ -1,0 +1,7 @@
+Feature,ADF_Stat,ADF_p,ADF_Stationary,KPSS_Stat,KPSS_p,KPSS_Stationary,Overall
+Boiler_Eff_,-48.550125,0.0,True,0.100081,0.1,True,Stationary
+Main_steam_flow_th,-49.119033,0.0,True,0.266171,0.1,True,Stationary
+Boiler_oxygen_level_,-46.75952,0.0,True,0.052554,0.1,True,Stationary
+Flue_gas_temperature_,-45.919118,0.0,True,0.171366,0.1,True,Stationary
+CO_mgm3,-49.19396,0.0,True,0.054545,0.1,True,Stationary
+Coal_Flow_th,-48.998446,0.0,True,0.058846,0.1,True,Stationary

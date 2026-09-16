@@ -1,0 +1,48 @@
+[2026-09-16 12:02:31] ======================================================================
+[2026-09-16 12:02:31] PHASE 02: SUPPLEMENTARY ANALYSIS
+[2026-09-16 12:02:31] ======================================================================
+[2026-09-16 12:02:31] Dataset loaded: (50091, 109)
+[2026-09-16 12:02:31] 
+======================================================================
+[2026-09-16 12:02:31] ANALYSIS 1: NEGATIVE VALUES CLASSIFICATION
+[2026-09-16 12:02:31] ======================================================================
+[2026-09-16 12:02:31] [OK] Saved: 02_11_negative_values_classification.csv
+[2026-09-16 12:02:31] 
+Negative values summary:
+[2026-09-16 12:02:31]   Condenser_vacuum_kPa: 50091 (100.0%) -> BY_DESIGN (always negative)
+[2026-09-16 12:02:31]   Pressure_Kpa: 50091 (100.0%) -> BY_DESIGN (always negative)
+[2026-09-16 12:02:31]   Pressure_Kpa_smooth3: 50091 (100.0%) -> BY_DESIGN (always negative)
+[2026-09-16 12:02:31]   Condenser_vacuum_kPa_smooth3: 50091 (100.0%) -> BY_DESIGN (always negative)
+[2026-09-16 12:02:31]   APH_Leakage_: 388 (0.775%) -> RARE_NEGATIVE (sensor anomaly)
+[2026-09-16 12:02:31]   CO_mgm3: 198 (0.395%) -> RARE_NEGATIVE (sensor anomaly)
+[2026-09-16 12:02:31]   Reheater_desuperheating_water_flow_th: 142 (0.283%) -> RARE_NEGATIVE (sensor anomaly)
+[2026-09-16 12:02:31]   APH_Leakage__smooth3: 95 (0.19%) -> RARE_NEGATIVE (sensor anomaly)
+[2026-09-16 12:02:31]   CO_mgm3_smooth3: 18 (0.036%) -> RARE_NEGATIVE (sensor anomaly)
+[2026-09-16 12:02:31]   Reheater_desuperheating_water_flow_th_smooth3: 4 (0.008%) -> RARE_NEGATIVE (sensor anomaly)
+[2026-09-16 12:02:31] 
+======================================================================
+[2026-09-16 12:02:31] ANALYSIS 2: OUTLIER TREATMENT EFFECTIVENESS
+[2026-09-16 12:02:31] ======================================================================
+[2026-09-16 12:02:31] [OK] Saved: 02_12_outlier_treatment_effectiveness.csv
+[2026-09-16 12:02:31] Columns capped: 54 / 54
+[2026-09-16 12:02:31] Columns NOT capped: 0
+[2026-09-16 12:02:31] 
+Columns that were NOT capped (outliers > 5%):
+[2026-09-16 12:02:31] 
+======================================================================
+[2026-09-16 12:02:31] ANALYSIS 3: SMOOTH COLUMNS CORRELATION
+[2026-09-16 12:02:31] ======================================================================
+[2026-09-16 12:02:31] Smooth columns: 54
+[2026-09-16 12:02:31] Matching originals: 54
+[2026-09-16 12:02:31] [OK] Saved: 02_13_smooth_original_correlation.csv
+[2026-09-16 12:02:31] Mean correlation (smooth vs original): 0.976911
+[2026-09-16 12:02:31] Min correlation: 0.976441
+[2026-09-16 12:02:31] 
+======================================================================
+[2026-09-16 12:02:31] ANALYSIS 4: COMPLETE COLUMN LIST
+[2026-09-16 12:02:31] ======================================================================
+[2026-09-16 12:02:31] [OK] Saved: 02_14_complete_column_list.csv
+[2026-09-16 12:02:31] Total columns: 109
+[2026-09-16 12:02:31] Numeric: 108
+[2026-09-16 12:02:31] Smooth: 54
+[2026-09-16 12:02:31] Timestamp: 1

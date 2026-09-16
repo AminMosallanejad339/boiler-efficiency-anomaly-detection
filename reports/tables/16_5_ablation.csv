@@ -1,0 +1,6 @@
+Configuration,N_Features,Precision,Recall,F1
+Without_Dust_mgm3_raw,3,0.144543,0.569767,0.230588
+Without_CO_mgm3_raw,3,0.131805,0.534884,0.211494
+All_Features,4,0.099723,0.418605,0.161074
+Without_APH_Leakage__raw,3,0.099688,0.372093,0.157248
+Without_Reheater_desuperheating_water_flow_th_raw,3,0.088685,0.337209,0.140436

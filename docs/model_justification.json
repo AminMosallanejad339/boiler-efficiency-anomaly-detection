@@ -1,0 +1,27 @@
+{
+  "Model": "Isolation Forest (Tuned)",
+  "Selected_Because": [
+    "No Data Leakage (Realistic evaluation)",
+    "F1 = 0.4437 (within SOTA range for Anomaly Detection)",
+    "ROC-AUC = 0.9710 (excellent discrimination)",
+    "Interpretable via SHAP (Score = 9/10)",
+    "Robust (F1 Std = 0.036 across seeds)",
+    "Fair (F1 Range = 0.126 across shifts)",
+    "Fast Training (1.47s)",
+    "Unsupervised (no labels needed in production)"
+  ],
+  "Alternatives_Considered": {
+    "Random Forest (Raw_Only)": "Rejected - Data Leakage (F1=1.0 is artificial)",
+    "AdaBoost (Leaky)": "Rejected - Data Leakage (F1=1.0 is artificial)",
+    "MLP": "Rejected - Failed (F1=0.0)",
+    "Isolation Forest (Default)": "Rejected - Lower F1 (0.17)"
+  },
+  "Limitations_Acknowledged": [
+    "F1 = 0.44 is not perfect",
+    "Recall = 56% (44% of anomalies missed)",
+    "Precision = 37% (63% false alarms)",
+    "Only 4 raw anomaly features available",
+    "Data is synthetic/anonymized"
+  ],
+  "Deployment_Recommendation": "Isolation Forest (Tuned) for Production"
+}

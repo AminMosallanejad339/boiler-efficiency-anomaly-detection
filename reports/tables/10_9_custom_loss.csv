@@ -1,0 +1,4 @@
+,Type,Class_Weight,Rationale,Alpha,Gamma
+Binary_Crossentropy,Standard,"{0: 1.0, 1: 63.57}","Simple, effective for most cases",,
+Focal_Loss,Custom,,Focus on hard-to-classify examples,0.25,2.0
+Weighted_BCE,Weighted,"{0: 1.0, 1: 63.57}",Explicit imbalance handling,,

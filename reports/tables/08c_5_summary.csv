@@ -1,0 +1,6 @@
+Metric,Value
+Anomaly_Best_Model,AdaBoost
+Anomaly_F1,0.988235
+Binned_Best_Model,RandomForest
+Binned_F1_Macro,0.336395
+Binned_Accuracy,0.337919

@@ -1,0 +1,17 @@
+Metric,Value
+Total_Records,50091
+Train_Records,35063
+Val_Records,7487
+Test_Records,7514
+Feature_Count,80
+Target_Regression,Boiler_Eff_
+Target_Classification,Anomaly_Label
+Train_Anomaly_Rate,1.5486
+Val_Anomaly_Rate,1.1487
+Test_Anomaly_Rate,1.6902
+Train_Time_Start,2022-01-01 00:00:00
+Train_Time_End,2022-09-01 11:40:00
+Val_Time_Start,2022-09-01 11:50:00
+Val_Time_End,2022-10-23 16:00:00
+Test_Time_Start,2022-10-23 16:10:00
+Test_Time_End,2022-12-14 20:20:00

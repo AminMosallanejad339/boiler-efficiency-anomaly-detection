@@ -1,0 +1,5 @@
+Decision,Columns,Rationale
+BY_DESIGN negative columns kept,"Condenser_vacuum_kPa, Pressure_Kpa","Negative by design (vacuum, differential pressure)"
+Anomaly_Label created,"APH_Leakage_, CO_mgm3, Reheater_desuperheating_water_flow_th, Dust_mgm3",Negative values indicate sensor anomalies per dataset documentation
+Smooth columns removed,54 columns,Mean correlation with original = 0.9769 (Multicollinearity)
+Outlier treatment confirmed,All 54 numeric columns,"Winsorization with IQR capping, all < 5% outliers"

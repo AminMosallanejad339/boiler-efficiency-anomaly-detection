@@ -1,0 +1,11 @@
+Item,Value
+Source,Kaggle - Power Plant Data: Steam Turbine & Boiler Metrics
+URL,https://www.kaggle.com/datasets/pavanjitsubash/power-plant-data-steam-turbine-and-boiler-metrics
+Author,Pavanjit Subash
+Data Type,Time Series (10-minute interval)
+Time Range,January 2022
+Records,"50,000+ rows"
+Features,58 operational parameters
+File Format,CSV
+File Size,50.64 MB
+License,Unspecified

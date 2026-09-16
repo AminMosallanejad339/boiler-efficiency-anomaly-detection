@@ -1,0 +1,6 @@
+Finding,Value,Interpretation
+Correlation with Anomaly,Max = 0.281865,Very weak correlation
+Distribution Difference (KS Test),Min p-value = 4.3065e-129,Significant difference
+Top Feature (RF Importance),APH_Leakage__raw: 0.426636,High importance
+Top Feature (Mutual Information),APH_Leakage__raw: 0.079910,Low MI
+Feature Overlap,Analyzed 4 features,High overlap between Anomaly and Normal

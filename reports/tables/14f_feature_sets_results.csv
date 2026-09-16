@@ -1,0 +1,9 @@
+Feature_Set,N_Features,Dataset,Precision,Recall,F1,ROC_AUC,PR_AUC
+Raw_Only,4,Val,1.0,1.0,1.0,1.0,1.0
+Raw_Only,4,Test,1.0,1.0,1.0,1.0,1.0
+Main_Only,74,Val,0.0,0.0,0.0,0.503299,0.010881
+Main_Only,74,Test,0.0,0.0,0.0,0.496792,0.016763
+Main_Plus_Raw,78,Val,1.0,0.872093,0.931677,0.999992,0.999341
+Main_Plus_Raw,78,Test,1.0,0.874016,0.932773,0.999987,0.999264
+Top_Main_Plus_Raw,8,Val,1.0,1.0,1.0,1.0,1.0
+Top_Main_Plus_Raw,8,Test,1.0,1.0,1.0,1.0,1.0

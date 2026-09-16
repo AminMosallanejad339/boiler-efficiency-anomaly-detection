@@ -1,0 +1,5 @@
+Metric,Value
+Original_Class_0,49335
+Original_Class_1,756
+Imbalance_Ratio,65.26
+Strategy,Will apply SMOTE in Phase 06 (Data Splitting)

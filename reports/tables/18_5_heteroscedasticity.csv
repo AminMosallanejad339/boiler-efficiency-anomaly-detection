@@ -1,0 +1,8 @@
+Metric,Value
+levene_stat,6294.030896234104
+levene_p,0.0
+bartlett_stat,25167.151144233645
+bartlett_p,0.0
+fligner_stat,8925.817635536667
+fligner_p,0.0
+homoscedastic,False

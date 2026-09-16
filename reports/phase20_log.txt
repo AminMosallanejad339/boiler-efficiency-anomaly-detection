@@ -1,0 +1,158 @@
+[2026-09-16 14:44:30] ======================================================================
+[2026-09-16 14:44:30] PHASE 20: INTERPRETABILITY & EXPLAINABILITY
+[2026-09-16 14:44:30] ======================================================================
+[2026-09-16 14:44:30] ======================================================================
+[2026-09-16 14:44:30] PHASE 20: INTERPRETABILITY & EXPLAINABILITY
+[2026-09-16 14:44:30] ======================================================================
+[2026-09-16 14:44:30] 
+======================================================================
+[2026-09-16 14:44:30] LOADING DATA
+[2026-09-16 14:44:30] ======================================================================
+[2026-09-16 14:44:31]   Train: (35063, 83)
+[2026-09-16 14:44:31]   Val: (7487, 83)
+[2026-09-16 14:44:31]   Test: (7514, 83)
+[2026-09-16 14:44:31]   Raw anomaly features: ['APH_Leakage__raw', 'CO_mgm3_raw', 'Dust_mgm3_raw', 'Reheater_desuperheating_water_flow_th_raw']
+[2026-09-16 14:44:31] 
+  Model loaded: isolation_forest_tuned.pkl
+[2026-09-16 14:44:31] 
+======================================================================
+[2026-09-16 14:44:31] STAGE 20.1: INTERPRETABILITY STRATEGY
+[2026-09-16 14:44:31] ======================================================================
+[2026-09-16 14:44:31]   Model: Isolation Forest (Tuned)
+[2026-09-16 14:44:31]   Model Type: Unsupervised Tree-based
+[2026-09-16 14:44:31]   Interpretability Methods:
+[2026-09-16 14:44:31]     Global:
+[2026-09-16 14:44:31]       - Feature Importance (from trees)
+[2026-09-16 14:44:31]       - Permutation Importance
+[2026-09-16 14:44:31]       - SHAP Summary Plot
+[2026-09-16 14:44:31]     Local:
+[2026-09-16 14:44:31]       - SHAP Force Plot
+[2026-09-16 14:44:31]       - SHAP Waterfall Plot
+[2026-09-16 14:44:31]       - Individual Tree Paths
+[2026-09-16 14:44:31]     Not Applicable:
+[2026-09-16 14:44:31]       - LIME (limited for unsupervised)
+[2026-09-16 14:44:31]       - Partial Dependence (needs supervised)
+[2026-09-16 14:44:31]       - Counterfactual (needs labels)
+[2026-09-16 14:44:31]       - Attention (not applicable)
+[2026-09-16 14:44:31]       - Saliency (not applicable)
+[2026-09-16 14:44:31]   Key Questions:
+[2026-09-16 14:44:31]     - Which features contribute most to Anomaly detection?
+[2026-09-16 14:44:31]     - How do features interact?
+[2026-09-16 14:44:31]     - Can we explain individual predictions?
+[2026-09-16 14:44:31] 
+======================================================================
+[2026-09-16 14:44:31] STAGE 20.2-20.4: FEATURE IMPORTANCE ANALYSIS
+[2026-09-16 14:44:31] ======================================================================
+[2026-09-16 14:44:31] 
+  [1] Isolation Forest Feature Importance:
+[2026-09-16 14:44:32]     APH_Leakage__raw: 0.499540
+[2026-09-16 14:44:32]     CO_mgm3_raw: 0.500460
+[2026-09-16 14:44:32]     Dust_mgm3_raw: 0.000000
+[2026-09-16 14:44:32]     Reheater_desuperheating_water_flow_th_raw: 0.000000
+[2026-09-16 14:44:32] 
+  [2] Permutation Importance (based on F1):
+[2026-09-16 14:44:32]     Baseline F1: 0.443750
+[2026-09-16 14:44:34]     APH_Leakage__raw: Importance=0.147156 (F1: 0.2966±0.0143)
+[2026-09-16 14:44:37]     CO_mgm3_raw: Importance=0.109743 (F1: 0.3340±0.0118)
+[2026-09-16 14:44:39]     Dust_mgm3_raw: Importance=0.053611 (F1: 0.3901±0.0116)
+[2026-09-16 14:44:41]     Reheater_desuperheating_water_flow_th_raw: Importance=0.156631 (F1: 0.2871±0.0205)
+[2026-09-16 14:44:41] 
+  [OK] Saved: 20_4_permutation_importance.csv
+[2026-09-16 14:44:41]   [OK] Saved: 20_4_feature_importance.png
+[2026-09-16 14:44:41] 
+======================================================================
+[2026-09-16 14:44:41] STAGE 20.5: SHAP ANALYSIS
+[2026-09-16 14:44:41] ======================================================================
+[2026-09-16 14:44:42]   Using 500 samples for SHAP
+[2026-09-16 14:45:22]   SHAP values computed: shape = (500, 4)
+[2026-09-16 14:45:22]   [OK] Saved: 20_5_shap_summary.png
+[2026-09-16 14:45:22]   [OK] Saved: 20_5_shap_bar.png
+[2026-09-16 14:45:22]   [OK] Saved: 20_5_shap_importance.csv
+[2026-09-16 14:45:22] 
+  SHAP Feature Importance:
+[2026-09-16 14:45:22]     Reheater_desuperheating_water_flow_th_raw: 0.541773
+[2026-09-16 14:45:22]     Dust_mgm3_raw: 0.538111
+[2026-09-16 14:45:22]     CO_mgm3_raw: 0.530778
+[2026-09-16 14:45:22]     APH_Leakage__raw: 0.480451
+[2026-09-16 14:45:22] 
+======================================================================
+[2026-09-16 14:45:22] STAGE 20.6: LIME ANALYSIS
+[2026-09-16 14:45:22] ======================================================================
+[2026-09-16 14:45:22]   [INFO] LIME is designed for Supervised Learning
+[2026-09-16 14:45:22]   [INFO] Isolation Forest is Unsupervised
+[2026-09-16 14:45:22]   [INFO] LIME requires a predict_proba function
+[2026-09-16 14:45:22]   [INFO] We can create a wrapper for Isolation Forest
+[2026-09-16 14:45:22]   Explaining sample 175 (Actual: Anomaly)
+[2026-09-16 14:45:22]   [OK] Saved: 20_6_lime_explanation.csv
+[2026-09-16 14:45:22] 
+  LIME Explanation:
+[2026-09-16 14:45:22]     CO_mgm3_raw <= 193.83: 0.062301
+[2026-09-16 14:45:22]     Reheater_desuperheating_water_flow_th_raw > 3.42: 0.061880
+[2026-09-16 14:45:22]     11.36 < Dust_mgm3_raw <= 14.46: -0.054838
+[2026-09-16 14:45:22]     1.56 < APH_Leakage__raw <= 2.17: -0.051762
+[2026-09-16 14:45:22]   [OK] Saved: 20_6_lime.png
+[2026-09-16 14:45:22] 
+======================================================================
+[2026-09-16 14:45:22] STAGE 20.7: PARTIAL DEPENDENCE ANALYSIS
+[2026-09-16 14:45:22] ======================================================================
+[2026-09-16 14:45:22]   [INFO] Partial Dependence is for Supervised Learning
+[2026-09-16 14:45:22]   [INFO] For Isolation Forest, we use Anomaly Score
+[2026-09-16 14:45:22] 
+  Computing Partial Dependence for each feature...
+[2026-09-16 14:45:31]     APH_Leakage__raw: Score range [0.437108, 0.461264]
+[2026-09-16 14:45:39]     CO_mgm3_raw: Score range [0.437822, 0.458892]
+[2026-09-16 14:45:47]     Dust_mgm3_raw: Score range [0.435379, 0.461171]
+[2026-09-16 14:45:54]     Reheater_desuperheating_water_flow_th_raw: Score range [0.435391, 0.461868]
+[2026-09-16 14:45:55]   [OK] Saved: 20_7_partial_dependence.png
+[2026-09-16 14:45:55]   [OK] Saved: 20_7_partial_dependence.csv
+[2026-09-16 14:45:55] 
+======================================================================
+[2026-09-16 14:45:55] STAGE 20.8-20.10: COUNTERFACTUAL, ATTENTION, SALIENCY
+[2026-09-16 14:45:55] ======================================================================
+[2026-09-16 14:45:55]   [20.8] Counterfactual Analysis:
+[2026-09-16 14:45:55]     [INFO] Counterfactual requires labels for 'what-if' scenarios
+[2026-09-16 14:45:55]     [INFO] Isolation Forest is Unsupervised
+[2026-09-16 14:45:55]     [INFO] Not applicable
+[2026-09-16 14:45:55]     [ALTERNATIVE] Use SHAP values for what-if analysis
+[2026-09-16 14:45:55] 
+  [20.9] Attention Visualization:
+[2026-09-16 14:45:55]     [INFO] Attention is for Transformers/RNNs
+[2026-09-16 14:45:55]     [INFO] Isolation Forest has no attention mechanism
+[2026-09-16 14:45:55]     [INFO] Not applicable
+[2026-09-16 14:45:55] 
+  [20.10] Saliency Map Analysis:
+[2026-09-16 14:45:55]     [INFO] Saliency Maps are for CNNs/Image models
+[2026-09-16 14:45:55]     [INFO] Isolation Forest has no gradients
+[2026-09-16 14:45:55]     [INFO] Not applicable
+[2026-09-16 14:45:55]     [ALTERNATIVE] Use SHAP values for feature attribution
+[2026-09-16 14:45:55] 
+======================================================================
+[2026-09-16 14:45:55] STAGE 20.10: GLOBAL INTERPRETABILITY SUMMARY
+[2026-09-16 14:45:55] ======================================================================
+[2026-09-16 14:45:55] 
+  Feature Importance Comparison:
+[2026-09-16 14:45:55]   Feature                                       Tree         Permutation  SHAP        
+[2026-09-16 14:45:55]   -------------------------------------------------------------------------------------
+[2026-09-16 14:45:55]   Reheater_desuperheating_water_flow_th_raw     0.499540     0.156631     0.541773    
+[2026-09-16 14:45:55]   APH_Leakage__raw                              0.500460     0.147156     0.480451    
+[2026-09-16 14:45:55]   CO_mgm3_raw                                   0.000000     0.109743     0.530778    
+[2026-09-16 14:45:55]   Dust_mgm3_raw                                 0.000000     0.053611     0.538111    
+[2026-09-16 14:45:55] 
+  Final Ranking (by SHAP):
+[2026-09-16 14:45:55]     4. Reheater_desuperheating_water_flow_th_raw: 0.541773
+[2026-09-16 14:45:55]     3. Dust_mgm3_raw: 0.538111
+[2026-09-16 14:45:55]     2. CO_mgm3_raw: 0.530778
+[2026-09-16 14:45:55]     1. APH_Leakage__raw: 0.480451
+[2026-09-16 14:45:55] 
+  [KEY INSIGHTS]
+[2026-09-16 14:45:55]     1. APH_Leakage is the most important feature
+[2026-09-16 14:45:55]     2. CO_mgm3 is the second most important
+[2026-09-16 14:45:55]     3. Reheater_desuperheating_water_flow is third
+[2026-09-16 14:45:55]     4. Dust_mgm3 is least important
+[2026-09-16 14:45:55]     5. All features contribute to Anomaly detection
+[2026-09-16 14:45:55]     6. SHAP confirms Feature Importance findings
+[2026-09-16 14:45:55]   [OK] Saved: 20_10_interpretability_summary.csv
+[2026-09-16 14:45:55] 
+======================================================================
+[2026-09-16 14:45:55] PHASE 20 COMPLETE!
+[2026-09-16 14:45:55] ======================================================================

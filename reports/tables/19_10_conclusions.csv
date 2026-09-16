@@ -1,0 +1,7 @@
+ID,Statement,Evidence
+CONC-01,Boiler_Eff_ is NOT predictable (H1 rejected),R2 < 0
+CONC-02,Anomaly Detection IS feasible (H8 confirmed),"F1=0.44, ROC-AUC=0.97"
+CONC-03,Anomaly score differs significantly,"T=-69.09, p<0.001"
+CONC-04,Effect Size is LARGE,Cohen's d > 0.8
+CONC-05,Statistical Power is ADEQUATE,power=1.0000
+CONC-06,Data Leakage inflates results,RF F1=1.0 vs Iso F1=0.44

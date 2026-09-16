@@ -1,0 +1,11 @@
+Parameter,Value
+Anomaly_Loss,Binary Crossentropy / Focal Loss
+Anomaly_Class_Weight,"{0: 1.0, 1: np.float64(63.57274401473296)}"
+Binned_Loss,Categorical Crossentropy
+Binned_Class_Weight,None (balanced)
+L2_Regularization,1e-4
+Dropout,"0.3, 0.3, 0.2"
+EarlyStopping,patience=10
+ReduceLROnPlateau,"patience=5, factor=0.5"
+Focal_Alpha,0.25
+Focal_Gamma,2.0

@@ -1,0 +1,5 @@
+Feature,Negative,Positive,Negative_Pct
+APH_Leakage__raw,276,34787,0.7872
+CO_mgm3_raw,152,34911,0.4335
+Dust_mgm3_raw,20,35043,0.057
+Reheater_desuperheating_water_flow_th_raw,97,34966,0.2766

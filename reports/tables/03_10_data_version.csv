@@ -1,0 +1,7 @@
+Key,Value
+Version,v0.3.0
+Phase,03 - Data Transformation & Encoding
+Parent_Version,v0.2.0 (Phase 02)
+Changes,"Added transformation, normalization, standardization, discretization"
+Shape,50091 x 58
+Date,2026-09-16 12:12:34

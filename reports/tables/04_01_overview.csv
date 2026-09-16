@@ -1,0 +1,12 @@
+Metric,Value
+Total Rows,50091
+Total Columns,58
+Numeric Columns,54
+Non-Numeric Columns,1
+Missing Values,0
+Duplicate Rows,0
+Memory (MB),22.17
+Time Range Start,2022-01-01 00:00:00
+Time Range End,2022-12-14 20:20:00
+Anomaly Count,756
+Anomaly Rate (%),1.5093

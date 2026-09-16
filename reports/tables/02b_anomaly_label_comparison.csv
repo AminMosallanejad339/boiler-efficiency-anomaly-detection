@@ -1,0 +1,8 @@
+Metric,Value
+Old_Anomaly_Count,726
+New_Anomaly_Count,756
+Difference,30
+Both_Anomaly,726
+Only_Old_Anomaly,0
+Only_New_Anomaly,30
+Neither,49335

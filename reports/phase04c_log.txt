@@ -1,0 +1,8 @@
+[2026-09-16 12:19:01] ======================================================================
+[2026-09-16 12:19:01] PHASE 04c: PAIRPLOT FIX
+[2026-09-16 12:19:01] ======================================================================
+[2026-09-16 12:19:01] Pairplot columns (unique): ['Corrected_Flue_Gas_Out_Temperature_C', 'Main_steam_flow_th', 'Cold_Reheat_Pressure_Mpa', 'CO_mgm3', 'O2_', 'Boiler_Eff_']
+[2026-09-16 12:19:01] Total columns: 6
+[2026-09-16 12:19:01] Sample shape: (2000, 6)
+[2026-09-16 12:19:03] [OK] Saved: 04_09_pairplot.png
+[2026-09-16 12:19:04] [OK] Saved: 04_09_target_vs_top5.png

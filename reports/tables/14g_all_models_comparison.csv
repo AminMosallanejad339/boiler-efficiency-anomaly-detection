@@ -1,0 +1,8 @@
+Model,Feature_Set,Dataset,N_Features,Precision,Recall,F1,ROC_AUC,PR_AUC
+Random_Forest,Raw_Only,Val,4,1.0,1.0,1.0,1.0,1.0
+Random_Forest,Raw_Only,Test,4,1.0,1.0,1.0,1.0,1.0
+Isolation_Forest,Raw_Only,Val,4,0.099723,0.418605,0.161074,0.939725,0.11278
+Isolation_Forest,Raw_Only,Test,4,0.15445,0.464567,0.231827,0.945617,0.203608
+MLP,Main_Plus_Raw,Val,78,0.0,0.0,0.0,0.506501,0.011433
+MLP,Main_Plus_Raw,Test,78,0.0,0.0,0.0,0.51985,0.018514
+AdaBoost (Leaky),Main_Only_Leaky,Val,78,1.0,0.976744,0.988235,0.99998,0.997605

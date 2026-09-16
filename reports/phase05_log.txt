@@ -1,0 +1,190 @@
+[2026-09-16 12:20:35] ======================================================================
+[2026-09-16 12:20:35] PHASE 05: FEATURE ENGINEERING
+[2026-09-16 12:20:35] ======================================================================
+[2026-09-16 12:20:36] Loaded: 50091 rows x 58 columns
+[2026-09-16 12:20:36] Targets: Boiler_Eff_ (Regression) + Anomaly_Label (Classification)
+[2026-09-16 12:20:36] Base feature columns: 53
+[2026-09-16 12:20:36] ======================================================================
+[2026-09-16 12:20:36] PHASE 05: FEATURE ENGINEERING
+[2026-09-16 12:20:36] ======================================================================
+[2026-09-16 12:20:36] Loaded: 50091 rows x 58 columns
+[2026-09-16 12:20:36] 
+======================================================================
+[2026-09-16 12:20:36] STAGE 5.1: FEATURE ENGINEERING STRATEGY
+[2026-09-16 12:20:36] ======================================================================
+[2026-09-16 12:20:36]   Targets: Boiler_Eff_ (Regression) + Anomaly_Label (Classification)
+[2026-09-16 12:20:36]   Base Features: 53
+[2026-09-16 12:20:36]   Strategy: Domain-driven + Statistical feature engineering
+[2026-09-16 12:20:36]   Categories:
+[2026-09-16 12:20:36]     - Temporal Features (from Timestamp)
+[2026-09-16 12:20:36]     - Domain-Specific Ratios (Steam, Fuel, Air)
+[2026-09-16 12:20:36]     - Thermodynamic Efficiency Metrics
+[2026-09-16 12:20:36]     - Rolling Window Statistics
+[2026-09-16 12:20:36]     - Lag Features (Time Series)
+[2026-09-16 12:20:36]     - Interaction Features
+[2026-09-16 12:20:36]   Output: Feature matrix ready for modeling
+[2026-09-16 12:20:36] 
+======================================================================
+[2026-09-16 12:20:36] STAGE 5.2: FEATURE EXTRACTION (Temporal)
+[2026-09-16 12:20:36] ======================================================================
+[2026-09-16 12:20:36]   [OK] Created 12 temporal features
+[2026-09-16 12:20:36]     hour: range [0.0000, 23.0000]
+[2026-09-16 12:20:36]     day_of_week: range [0.0000, 6.0000]
+[2026-09-16 12:20:36]     day_of_month: range [1.0000, 31.0000]
+[2026-09-16 12:20:36]     month: range [1.0000, 12.0000]
+[2026-09-16 12:20:36]     quarter: range [1.0000, 4.0000]
+[2026-09-16 12:20:36]     week_of_year: range [1.0000, 52.0000]
+[2026-09-16 12:20:36]     hour_sin: range [-1.0000, 1.0000]
+[2026-09-16 12:20:36]     hour_cos: range [-1.0000, 1.0000]
+[2026-09-16 12:20:36]     dow_sin: range [-0.9749, 0.9749]
+[2026-09-16 12:20:36]     dow_cos: range [-0.9010, 1.0000]
+[2026-09-16 12:20:36]     month_sin: range [-1.0000, 1.0000]
+[2026-09-16 12:20:36]     month_cos: range [-1.0000, 1.0000]
+[2026-09-16 12:20:36] 
+======================================================================
+[2026-09-16 12:20:36] STAGE 5.3: FEATURE CONSTRUCTION (Domain-Specific)
+[2026-09-16 12:20:36] ======================================================================
+[2026-09-16 12:20:36]   [OK] Created 12 domain-specific features:
+[2026-09-16 12:20:36]     steam_to_fuel_ratio: range [4.7771, 5.1684]
+[2026-09-16 12:20:36]     air_to_fuel_ratio: range [0.0257, 0.0311]
+[2026-09-16 12:20:36]     heat_rate_deviation: range [-292.7200, -54.9659]
+[2026-09-16 12:20:36]     aph_effect_leak_ratio: range [15.2378, 159339.3797]
+[2026-09-16 12:20:36]     flue_gas_temp_diff: range [-239.1973, -222.8142]
+[2026-09-16 12:20:36]     feedwater_temp_rise: range [189.0653, 217.3901]
+[2026-09-16 12:20:36]     turbine_to_boiler_eff: range [0.8513, 0.8735]
+[2026-09-16 12:20:36]     net_to_gross_load: range [0.9258, 0.9658]
+[2026-09-16 12:20:36]     o2_aph_diff: range [-0.2005, 0.9207]
+[2026-09-16 12:20:36]     energy_per_coal: range [4060017.4118, 4457342.4758]
+[2026-09-16 12:20:36]     enthalpy_drop: range [431.5721, 452.4289]
+[2026-09-16 12:20:36]     deltaP_ratio: range [0.7919, 0.8238]
+[2026-09-16 12:20:36] 
+======================================================================
+[2026-09-16 12:20:36] STAGE 5.4: FEATURE TRANSFORMATION
+[2026-09-16 12:20:36] ======================================================================
+[2026-09-16 12:20:36]   [OK] Applied Log transformation to 1 features
+[2026-09-16 12:20:36]     aph_effect_leak_ratio_log
+[2026-09-16 12:20:36] 
+======================================================================
+[2026-09-16 12:20:36] STAGE 5.5: FEATURE SCALING
+[2026-09-16 12:20:36] ======================================================================
+[2026-09-16 12:20:36]   [INFO] Scaling strategy:
+[2026-09-16 12:20:36]     - StandardScaler for tree-based models (not needed)
+[2026-09-16 12:20:36]     - MinMaxScaler for neural networks
+[2026-09-16 12:20:36]     - RobustScaler for outlier-prone features
+[2026-09-16 12:20:36]   [NOTE] Scaling will be applied in Phase 06 (Pipeline)
+[2026-09-16 12:20:36]   [NOTE] Feature count for scaling: 80
+[2026-09-16 12:20:36] 
+======================================================================
+[2026-09-16 12:20:36] STAGE 5.6: FEATURE SELECTION
+[2026-09-16 12:20:36] ======================================================================
+[2026-09-16 12:20:36]   Features for selection: 80
+[2026-09-16 12:20:36]   [OK] Saved: 05_06_feature_selection_regression.csv
+[2026-09-16 12:20:36]   [OK] Saved: 05_06_feature_selection_classification.csv
+[2026-09-16 12:21:18]   [OK] Saved: 05_06_mutual_information.csv
+[2026-09-16 12:21:18] 
+  Top 10 features for Classification (F-Score):
+[2026-09-16 12:21:18]     aph_effect_leak_ratio_log: F=4256.3176, p=0.0000e+00
+[2026-09-16 12:21:18]     APH_Leakage_: F=1348.5697, p=2.3823e-291
+[2026-09-16 12:21:18]     aph_effect_leak_ratio: F=541.8648, p=3.1914e-119
+[2026-09-16 12:21:18]     CO_mgm3: F=325.9987, p=1.2164e-72
+[2026-09-16 12:21:18]     Reheater_desuperheating_water_flow_th: F=206.4436, p=1.0158e-46
+[2026-09-16 12:21:18]     Dust_mgm3: F=12.3523, p=4.4084e-04
+[2026-09-16 12:21:18]     Feedwater_temperature_: F=10.5044, p=1.1917e-03
+[2026-09-16 12:21:18]     feedwater_temp_rise: F=9.5424, p=2.0088e-03
+[2026-09-16 12:21:18]     O2_Out_APH_: F=8.3353, p=3.8899e-03
+[2026-09-16 12:21:18]     Flue_gas_temperature_: F=7.0815, p=7.7907e-03
+[2026-09-16 12:21:18] 
+  Top 10 features for Regression (F-Score):
+[2026-09-16 12:21:18]     turbine_to_boiler_eff: F=887.3801, p=2.6671e-193
+[2026-09-16 12:21:18]     day_of_month: F=16.6102, p=4.5975e-05
+[2026-09-16 12:21:18]     Corrected_Flue_Gas_Out_Temperature_C: F=14.4405, p=1.4483e-04
+[2026-09-16 12:21:18]     dow_sin: F=10.2039, p=1.4023e-03
+[2026-09-16 12:21:18]     Main_steam_flow_th: F=8.4759, p=3.6005e-03
+[2026-09-16 12:21:18]     hour_cos: F=7.7731, p=5.3051e-03
+[2026-09-16 12:21:18]     steam_to_fuel_ratio: F=7.6544, p=5.6656e-03
+[2026-09-16 12:21:18]     Cold_Reheat_Pressure_Mpa: F=7.3474, p=6.7183e-03
+[2026-09-16 12:21:18]     CO_mgm3: F=6.1224, p=1.3351e-02
+[2026-09-16 12:21:18]     O2_: F=5.7367, p=1.6617e-02
+[2026-09-16 12:21:18] 
+======================================================================
+[2026-09-16 12:21:18] STAGE 5.7: FEATURE IMPORTANCE ANALYSIS
+[2026-09-16 12:21:18] ======================================================================
+[2026-09-16 12:22:16]   [OK] Random Forest Regression trained
+[2026-09-16 12:22:16]   [OK] Saved: 05_07_importance_regression.csv
+[2026-09-16 12:22:16] 
+  Top 15 features for Regression (RF Importance):
+[2026-09-16 12:22:16]     HP_Turbine_eff_: 0.523118
+[2026-09-16 12:22:16]     turbine_to_boiler_eff: 0.469235
+[2026-09-16 12:22:16]     Main_steam_pressure_boiler_side_Mpa: 0.000141
+[2026-09-16 12:22:16]     NPHR_KcalKwh: 0.000134
+[2026-09-16 12:22:16]     flue_gas_temp_diff: 0.000130
+[2026-09-16 12:22:16]     Feedwater_pressure_MPa: 0.000128
+[2026-09-16 12:22:16]     Entropi_Inlet_MS_KjKg_Deg_C: 0.000126
+[2026-09-16 12:22:16]     Superheater_desuperheating_water_flow_th: 0.000125
+[2026-09-16 12:22:16]     HHV_KcalKg: 0.000123
+[2026-09-16 12:22:16]     Cold_Reheat_Temperature_C: 0.000123
+[2026-09-16 12:22:16]     Velocity_ms: 0.000123
+[2026-09-16 12:22:16]     CO_mgm3: 0.000122
+[2026-09-16 12:22:16]     Refference_Temperature_C: 0.000119
+[2026-09-16 12:22:16]     Main_steam_temperature_turbine_side_: 0.000119
+[2026-09-16 12:22:16]     Cold_Reheat_Pressure_Mpa: 0.000117
+[2026-09-16 12:22:20]   [OK] Random Forest Classification trained
+[2026-09-16 12:22:20]   [OK] Saved: 05_07_importance_classification.csv
+[2026-09-16 12:22:20] 
+  Top 15 features for Classification (RF Importance):
+[2026-09-16 12:22:20]     CO_mgm3: 0.169478
+[2026-09-16 12:22:20]     APH_Leakage_: 0.149814
+[2026-09-16 12:22:20]     Reheater_desuperheating_water_flow_th: 0.132457
+[2026-09-16 12:22:20]     aph_effect_leak_ratio_log: 0.112729
+[2026-09-16 12:22:20]     aph_effect_leak_ratio: 0.109373
+[2026-09-16 12:22:20]     Dust_mgm3: 0.023664
+[2026-09-16 12:22:20]     Main_steam_pressure_turbine_side_MPa: 0.005899
+[2026-09-16 12:22:20]     Main_steam_temperature_boiler_side_: 0.005687
+[2026-09-16 12:22:20]     O2_Out_APH_: 0.005558
+[2026-09-16 12:22:20]     Entalphy_Isentropis_Cold_Reheat_kjkg: 0.005556
+[2026-09-16 12:22:20]     NTHR_KcalKwh: 0.005539
+[2026-09-16 12:22:20]     Entalphy_Cold_Reheat_kjkg: 0.005441
+[2026-09-16 12:22:20]     Condenser_vacuum_kPa: 0.005418
+[2026-09-16 12:22:20]     Reheat_steam_temperature_boiler_side_: 0.005367
+[2026-09-16 12:22:20]     turbine_to_boiler_eff: 0.005266
+[2026-09-16 12:22:20]   [OK] Saved: 05_07_feature_importance.png
+[2026-09-16 12:22:20] 
+======================================================================
+[2026-09-16 12:22:20] STAGE 5.8: DIMENSIONALITY REDUCTION (PCA)
+[2026-09-16 12:22:20] ======================================================================
+[2026-09-16 12:22:20]   [OK] PCA completed with 20 components
+[2026-09-16 12:22:20]   Explained variance (first 10):
+[2026-09-16 12:22:20]     PC1: 4.60% (cumulative: 4.60%)
+[2026-09-16 12:22:20]     PC2: 3.81% (cumulative: 8.41%)
+[2026-09-16 12:22:20]     PC3: 3.10% (cumulative: 11.51%)
+[2026-09-16 12:22:20]     PC4: 2.60% (cumulative: 14.10%)
+[2026-09-16 12:22:20]     PC5: 2.57% (cumulative: 16.67%)
+[2026-09-16 12:22:20]     PC6: 2.54% (cumulative: 19.21%)
+[2026-09-16 12:22:20]     PC7: 2.52% (cumulative: 21.73%)
+[2026-09-16 12:22:20]     PC8: 2.50% (cumulative: 24.23%)
+[2026-09-16 12:22:20]     PC9: 2.48% (cumulative: 26.70%)
+[2026-09-16 12:22:20]     PC10: 2.47% (cumulative: 29.17%)
+[2026-09-16 12:22:20]   Components for 95% variance: 1
+[2026-09-16 12:22:20]   [OK] Saved: 05_08_pca_variance.csv
+[2026-09-16 12:22:21]   [OK] Saved: 05_08_pca_variance.png
+[2026-09-16 12:22:21] 
+======================================================================
+[2026-09-16 12:22:21] STAGE 5.9: FEATURE INTERACTION
+[2026-09-16 12:22:21] ======================================================================
+[2026-09-16 12:22:21]   [INFO] Feature interaction strategies:
+[2026-09-16 12:22:21]     - Polynomial features (degree 2) for top features
+[2026-09-16 12:22:21]     - Ratio features between key variables
+[2026-09-16 12:22:21]     - Product features for correlated pairs
+[2026-09-16 12:22:21]   [NOTE] Interactions will be created in Phase 06 (Pipeline)
+[2026-09-16 12:22:21] 
+======================================================================
+[2026-09-16 12:22:21] STAGE 5.10: FEATURE ENCODING
+[2026-09-16 12:22:21] ======================================================================
+[2026-09-16 12:22:21]   Categorical columns: 0
+[2026-09-16 12:22:21]   [OK] No categorical columns to encode
+[2026-09-16 12:22:21]   [INFO] Temporal features already encoded as cyclic (sin/cos)
+[2026-09-16 12:22:23] 
+======================================================================
+[2026-09-16 12:22:23] [OK] FINAL DATASET SAVED: E:\DESKTOP\boiler-efficiency-anomaly-detection\data\processed\industrial_dataset_phase05_final.csv
+[2026-09-16 12:22:23] [OK] Final shape: (50091, 83)
+[2026-09-16 12:22:23] ======================================================================

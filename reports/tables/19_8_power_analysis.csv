@@ -1,0 +1,7 @@
+Metric,Value
+cohens_d,2.9881828868139646
+n_normal,34520
+n_anomaly,543
+power,1.0
+required_n,58.71216025537936
+adequate_power,True

@@ -1,0 +1,4 @@
+,F1,Precision,Recall,ROC_AUC
+Isolation_Forest_Tuned,0.44375,0.367876,0.559055,0.971015
+Dummy_Classifier,0.0,0.0,0.0,0.5
+Random_Forest_Leakage,1.0,1.0,1.0,1.0

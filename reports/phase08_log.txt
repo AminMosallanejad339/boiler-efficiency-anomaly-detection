@@ -1,0 +1,294 @@
+[2026-09-16 12:46:55] ======================================================================
+[2026-09-16 12:46:55] PHASE 08: MODEL SELECTION
+[2026-09-16 12:46:55] ======================================================================
+[2026-09-16 12:46:55] Train: (35063, 83)
+[2026-09-16 12:46:55] Validation: (7487, 83)
+[2026-09-16 12:46:55] Features: 80
+[2026-09-16 12:46:55] X_train: (35063, 80)
+[2026-09-16 12:46:55] X_val: (7487, 80)
+[2026-09-16 12:46:55] ======================================================================
+[2026-09-16 12:46:55] PHASE 08: MODEL SELECTION
+[2026-09-16 12:46:55] ======================================================================
+[2026-09-16 12:46:56] Train: (35063, 80)
+[2026-09-16 12:46:56] Val: (7487, 80)
+[2026-09-16 12:46:56] Features: 80
+[2026-09-16 12:46:56] 
+======================================================================
+[2026-09-16 12:46:56] STAGE 8.1: MODEL SELECTION STRATEGY
+[2026-09-16 12:46:56] ======================================================================
+[2026-09-16 12:46:56]   Regression Target: Boiler_Eff_
+[2026-09-16 12:46:56]   Classification Target: Anomaly_Label
+[2026-09-16 12:46:56]   Assumptions from Phase 07:
+[2026-09-16 12:46:56]     - Linearity: NOT satisfied -> Use non-linear models
+[2026-09-16 12:46:56]     - Normality: NOT satisfied -> Use non-parametric
+[2026-09-16 12:46:56]     - Independence: NOT satisfied -> Use TimeSeriesSplit
+[2026-09-16 12:46:56]     - Homoscedasticity: SATISFIED
+[2026-09-16 12:46:56]     - Multicollinearity: SEVERE -> Use tree-based
+[2026-09-16 12:46:56]     - Stationarity: SATISFIED
+[2026-09-16 12:46:56]   Model Families to Test:
+[2026-09-16 12:46:56]     - Baseline (Dummy)
+[2026-09-16 12:46:56]     - Linear (LinearRegression, Ridge, Lasso)
+[2026-09-16 12:46:56]     - Tree (DecisionTree)
+[2026-09-16 12:46:56]     - Ensemble (RandomForest, ExtraTrees, GradientBoosting, AdaBoost)
+[2026-09-16 12:46:56]     - Advanced (XGBoost, LightGBM)
+[2026-09-16 12:46:56]   Evaluation Metrics Regression:
+[2026-09-16 12:46:56]     - RMSE
+[2026-09-16 12:46:56]     - MAE
+[2026-09-16 12:46:56]     - R2
+[2026-09-16 12:46:56]   Evaluation Metrics Classification:
+[2026-09-16 12:46:56]     - Accuracy
+[2026-09-16 12:46:56]     - Precision
+[2026-09-16 12:46:56]     - Recall
+[2026-09-16 12:46:56]     - F1
+[2026-09-16 12:46:56]     - ROC-AUC
+[2026-09-16 12:46:56]     - PR-AUC
+[2026-09-16 12:46:56]   Cross-Validation:
+[2026-09-16 12:46:56]     Regression: TimeSeriesSplit (5 folds)
+[2026-09-16 12:46:56]     Classification: StratifiedKFold (5 folds)
+[2026-09-16 12:46:56] 
+======================================================================
+[2026-09-16 12:46:56] STAGE 8.2: MODEL FAMILY IDENTIFICATION
+[2026-09-16 12:46:56] ======================================================================
+[2026-09-16 12:46:56]   Baseline:
+[2026-09-16 12:46:56]     Models: DummyRegressor, DummyClassifier
+[2026-09-16 12:46:56]     Purpose: Lower bound benchmark
+[2026-09-16 12:46:56]   Linear:
+[2026-09-16 12:46:56]     Models: LinearRegression, Ridge, Lasso, LogisticRegression
+[2026-09-16 12:46:56]     Purpose: Test linear relationships
+[2026-09-16 12:46:56]     Suitability: LOW (linearity not satisfied)
+[2026-09-16 12:46:56]   Tree:
+[2026-09-16 12:46:56]     Models: DecisionTreeRegressor, DecisionTreeClassifier
+[2026-09-16 12:46:56]     Purpose: Non-linear baseline
+[2026-09-16 12:46:56]     Suitability: MEDIUM (prone to overfitting)
+[2026-09-16 12:46:56]   Ensemble:
+[2026-09-16 12:46:56]     Models: RandomForest, ExtraTrees, GradientBoosting, AdaBoost
+[2026-09-16 12:46:56]     Purpose: Robust non-linear models
+[2026-09-16 12:46:56]     Suitability: HIGH
+[2026-09-16 12:46:56]   Advanced:
+[2026-09-16 12:46:56]     Models: XGBoost, LightGBM
+[2026-09-16 12:46:56]     Purpose: State-of-the-art gradient boosting
+[2026-09-16 12:46:56]     Suitability: VERY HIGH
+[2026-09-16 12:46:56] 
+======================================================================
+[2026-09-16 12:46:56] STAGE 8.3: ALGORITHM SELECTION
+[2026-09-16 12:46:56] ======================================================================
+[2026-09-16 12:46:56]   Regression models: 11
+[2026-09-16 12:46:56]     - Dummy_Mean
+[2026-09-16 12:46:56]     - Linear
+[2026-09-16 12:46:56]     - Ridge
+[2026-09-16 12:46:56]     - Lasso
+[2026-09-16 12:46:56]     - DecisionTree
+[2026-09-16 12:46:56]     - RandomForest
+[2026-09-16 12:46:56]     - ExtraTrees
+[2026-09-16 12:46:56]     - GradientBoosting
+[2026-09-16 12:46:56]     - AdaBoost
+[2026-09-16 12:46:56]     - XGBoost
+[2026-09-16 12:46:56]     - LightGBM
+[2026-09-16 12:46:56] 
+  Classification models: 9
+[2026-09-16 12:46:56]     - Dummy_MostFrequent
+[2026-09-16 12:46:56]     - Logistic
+[2026-09-16 12:46:56]     - DecisionTree
+[2026-09-16 12:46:56]     - RandomForest
+[2026-09-16 12:46:56]     - ExtraTrees
+[2026-09-16 12:46:56]     - GradientBoosting
+[2026-09-16 12:46:56]     - AdaBoost
+[2026-09-16 12:46:56]     - XGBoost
+[2026-09-16 12:46:56]     - LightGBM
+[2026-09-16 12:46:56] 
+======================================================================
+[2026-09-16 12:46:56] STAGE 8.4-8.6: REGRESSION MODEL COMPARISON
+[2026-09-16 12:46:56] ======================================================================
+[2026-09-16 12:46:56] 
+  Training Dummy_Mean...
+[2026-09-16 12:46:56]     RMSE Val: 0.051185 | R2 Val: -0.000301 | Time: 0.09s
+[2026-09-16 12:46:56] 
+  Training Linear...
+[2026-09-16 12:46:56]     RMSE Val: 0.000217 | R2 Val: 0.999982 | Time: 0.16s
+[2026-09-16 12:46:56] 
+  Training Ridge...
+[2026-09-16 12:46:56]     RMSE Val: 0.000400 | R2 Val: 0.999939 | Time: 0.12s
+[2026-09-16 12:46:56] 
+  Training Lasso...
+[2026-09-16 12:46:58]     RMSE Val: 0.021765 | R2 Val: 0.819136 | Time: 1.33s
+[2026-09-16 12:46:58] 
+  Training DecisionTree...
+[2026-09-16 12:47:00]     RMSE Val: 0.031529 | R2 Val: 0.620442 | Time: 2.34s
+[2026-09-16 12:47:00] 
+  Training RandomForest...
+[2026-09-16 12:47:48]     RMSE Val: 0.003684 | R2 Val: 0.994817 | Time: 48.08s
+[2026-09-16 12:47:48] 
+  Training ExtraTrees...
+[2026-09-16 12:47:58]     RMSE Val: 0.003142 | R2 Val: 0.996231 | Time: 9.35s
+[2026-09-16 12:47:58] 
+  Training GradientBoosting...
+[2026-09-16 12:49:16]     RMSE Val: 0.025491 | R2 Val: 0.751900 | Time: 77.91s
+[2026-09-16 12:49:16] 
+  Training AdaBoost...
+[2026-09-16 12:49:44]     RMSE Val: 0.049533 | R2 Val: 0.063217 | Time: 28.22s
+[2026-09-16 12:49:44] 
+  Training XGBoost...
+[2026-09-16 12:49:45]     RMSE Val: 0.007188 | R2 Val: 0.980273 | Time: 0.76s
+[2026-09-16 12:49:45] 
+  Training LightGBM...
+[2026-09-16 12:49:46]     RMSE Val: 0.008361 | R2 Val: 0.973306 | Time: 0.54s
+[2026-09-16 12:49:46] 
+  [OK] Saved: 08_04_regression_comparison.csv
+[2026-09-16 12:49:46] 
+  Regression Model Ranking (by R2 Val):
+[2026-09-16 12:49:46]     Linear: R2=0.999982, RMSE=0.000217, Overfit=-0.000001
+[2026-09-16 12:49:46]     Ridge: R2=0.999939, RMSE=0.000400, Overfit=0.000000
+[2026-09-16 12:49:46]     ExtraTrees: R2=0.996231, RMSE=0.003142, Overfit=0.003769
+[2026-09-16 12:49:46]     RandomForest: R2=0.994817, RMSE=0.003684, Overfit=0.004390
+[2026-09-16 12:49:46]     XGBoost: R2=0.980273, RMSE=0.007188, Overfit=0.012648
+[2026-09-16 12:49:46]     LightGBM: R2=0.973306, RMSE=0.008361, Overfit=0.004358
+[2026-09-16 12:49:46]     Lasso: R2=0.819136, RMSE=0.021765, Overfit=0.000770
+[2026-09-16 12:49:46]     GradientBoosting: R2=0.751900, RMSE=0.025491, Overfit=0.010570
+[2026-09-16 12:49:46]     DecisionTree: R2=0.620442, RMSE=0.031529, Overfit=-0.006853
+[2026-09-16 12:49:46]     AdaBoost: R2=0.063217, RMSE=0.049533, Overfit=0.003665
+[2026-09-16 12:49:46]     Dummy_Mean: R2=-0.000301, RMSE=0.051185, Overfit=0.000301
+[2026-09-16 12:49:46] 
+======================================================================
+[2026-09-16 12:49:46] STAGE 8.4-8.6: CLASSIFICATION MODEL COMPARISON
+[2026-09-16 12:49:46] ======================================================================
+[2026-09-16 12:49:46] 
+  Training Dummy_MostFrequent...
+[2026-09-16 12:49:46]     F1: 0.000000 | Recall: 0.000000 | ROC-AUC: 0.500000 | Time: 0.11s
+[2026-09-16 12:49:46] 
+  Training Logistic...
+[2026-09-16 12:49:49]     F1: 0.132710 | Recall: 0.825581 | ROC-AUC: 0.945801 | Time: 2.47s
+[2026-09-16 12:49:49] 
+  Training DecisionTree...
+[2026-09-16 12:49:50]     F1: 0.977273 | Recall: 1.000000 | ROC-AUC: 0.999994 | Time: 1.40s
+[2026-09-16 12:49:50] 
+  Training RandomForest...
+[2026-09-16 12:49:53]     F1: 0.938272 | Recall: 0.883721 | ROC-AUC: 0.999943 | Time: 2.53s
+[2026-09-16 12:49:53] 
+  Training ExtraTrees...
+[2026-09-16 12:49:53]     F1: 0.022989 | Recall: 0.011628 | ROC-AUC: 0.996379 | Time: 0.50s
+[2026-09-16 12:49:53] 
+  Training GradientBoosting...
+[2026-09-16 12:51:13]     F1: 0.976744 | Recall: 0.976744 | ROC-AUC: 0.999975 | Time: 79.41s
+[2026-09-16 12:51:13] 
+  Training AdaBoost...
+[2026-09-16 12:51:43]     F1: 0.988235 | Recall: 0.976744 | ROC-AUC: 0.999980 | Time: 30.23s
+[2026-09-16 12:51:43] 
+  Training XGBoost...
+[2026-09-16 12:51:44]     F1: 0.902857 | Recall: 0.918605 | ROC-AUC: 0.999755 | Time: 0.54s
+[2026-09-16 12:51:44] 
+  Training LightGBM...
+[2026-09-16 12:51:44]     F1: 0.905882 | Recall: 0.895349 | ROC-AUC: 0.999445 | Time: 0.50s
+[2026-09-16 12:51:44] 
+  [OK] Saved: 08_04_classification_comparison.csv
+[2026-09-16 12:51:44] 
+  Classification Model Ranking (by F1):
+[2026-09-16 12:51:44]     AdaBoost: F1=0.988235, Recall=0.976744, ROC-AUC=0.999980
+[2026-09-16 12:51:44]     DecisionTree: F1=0.977273, Recall=1.000000, ROC-AUC=0.999994
+[2026-09-16 12:51:44]     GradientBoosting: F1=0.976744, Recall=0.976744, ROC-AUC=0.999975
+[2026-09-16 12:51:44]     RandomForest: F1=0.938272, Recall=0.883721, ROC-AUC=0.999943
+[2026-09-16 12:51:44]     LightGBM: F1=0.905882, Recall=0.895349, ROC-AUC=0.999445
+[2026-09-16 12:51:44]     XGBoost: F1=0.902857, Recall=0.918605, ROC-AUC=0.999755
+[2026-09-16 12:51:44]     Logistic: F1=0.132710, Recall=0.825581, ROC-AUC=0.945801
+[2026-09-16 12:51:44]     ExtraTrees: F1=0.022989, Recall=0.011628, ROC-AUC=0.996379
+[2026-09-16 12:51:44]     Dummy_MostFrequent: F1=0.000000, Recall=0.000000, ROC-AUC=0.500000
+[2026-09-16 12:51:44] 
+======================================================================
+[2026-09-16 12:51:44] STAGE 8.7: MODEL JUSTIFICATION
+[2026-09-16 12:51:44] ======================================================================
+[2026-09-16 12:51:44]   Best Regression Model: Linear
+[2026-09-16 12:51:44]     R2 Val: 0.999982
+[2026-09-16 12:51:44]     RMSE Val: 0.000217
+[2026-09-16 12:51:44]     Overfit: -0.000001
+[2026-09-16 12:51:44] 
+  Best Classification Model: AdaBoost
+[2026-09-16 12:51:44]     F1: 0.988235
+[2026-09-16 12:51:44]     Recall: 0.976744
+[2026-09-16 12:51:44]     Precision: 1.000000
+[2026-09-16 12:51:44]     ROC-AUC: 0.999980
+[2026-09-16 12:51:44] 
+  Justification:
+[2026-09-16 12:51:44]     Regression: Linear selected because:
+[2026-09-16 12:51:44]       - Highest R2 Val
+[2026-09-16 12:51:44]       - Non-linear (matches Phase 07 findings)
+[2026-09-16 12:51:44]       - Robust to multicollinearity
+[2026-09-16 12:51:44]     Classification: AdaBoost selected because:
+[2026-09-16 12:51:44]       - Highest F1 Score
+[2026-09-16 12:51:44]       - Handles imbalanced data via class_weight/scale_pos_weight
+[2026-09-16 12:51:44]       - Robust to non-normal distributions
+[2026-09-16 12:51:44] 
+======================================================================
+[2026-09-16 12:51:44] STAGE 8.8: COMPLEXITY ANALYSIS
+[2026-09-16 12:51:44] ======================================================================
+[2026-09-16 12:51:44]   Regression Models (sorted by Train Time):
+[2026-09-16 12:51:44]     Dummy_Mean: 0.088s (R2=-0.0003)
+[2026-09-16 12:51:44]     Ridge: 0.115s (R2=0.9999)
+[2026-09-16 12:51:44]     Linear: 0.158s (R2=1.0000)
+[2026-09-16 12:51:44]     LightGBM: 0.545s (R2=0.9733)
+[2026-09-16 12:51:44]     XGBoost: 0.759s (R2=0.9803)
+[2026-09-16 12:51:44]     Lasso: 1.326s (R2=0.8191)
+[2026-09-16 12:51:44]     DecisionTree: 2.339s (R2=0.6204)
+[2026-09-16 12:51:44]     ExtraTrees: 9.349s (R2=0.9962)
+[2026-09-16 12:51:44]     AdaBoost: 28.221s (R2=0.0632)
+[2026-09-16 12:51:44]     RandomForest: 48.078s (R2=0.9948)
+[2026-09-16 12:51:44]     GradientBoosting: 77.909s (R2=0.7519)
+[2026-09-16 12:51:44] 
+  Classification Models (sorted by Train Time):
+[2026-09-16 12:51:44]     Dummy_MostFrequent: 0.108s (F1=0.0000)
+[2026-09-16 12:51:44]     ExtraTrees: 0.499s (F1=0.0230)
+[2026-09-16 12:51:44]     LightGBM: 0.502s (F1=0.9059)
+[2026-09-16 12:51:44]     XGBoost: 0.538s (F1=0.9029)
+[2026-09-16 12:51:44]     DecisionTree: 1.395s (F1=0.9773)
+[2026-09-16 12:51:44]     Logistic: 2.470s (F1=0.1327)
+[2026-09-16 12:51:44]     RandomForest: 2.529s (F1=0.9383)
+[2026-09-16 12:51:44]     AdaBoost: 30.229s (F1=0.9882)
+[2026-09-16 12:51:44]     GradientBoosting: 79.408s (F1=0.9767)
+[2026-09-16 12:51:44] 
+======================================================================
+[2026-09-16 12:51:44] STAGE 8.9: BIAS-VARIANCE ANALYSIS
+[2026-09-16 12:51:44] ======================================================================
+[2026-09-16 12:51:44]   Regression Models (Overfit = R2_Train - R2_Val):
+[2026-09-16 12:51:44]   Model                     R2_Train     R2_Val       Overfit      Diagnosis
+[2026-09-16 12:51:44]   ---------------------------------------------------------------------------
+[2026-09-16 12:51:44]   Linear                    0.999981     0.999982     -0.000001    BALANCED
+[2026-09-16 12:51:44]   Ridge                     0.999939     0.999939     0.000000     BALANCED
+[2026-09-16 12:51:44]   ExtraTrees                1.000000     0.996231     0.003769     BALANCED
+[2026-09-16 12:51:44]   RandomForest              0.999207     0.994817     0.004390     BALANCED
+[2026-09-16 12:51:44]   XGBoost                   0.992921     0.980273     0.012648     BALANCED
+[2026-09-16 12:51:44]   LightGBM                  0.977664     0.973306     0.004358     BALANCED
+[2026-09-16 12:51:44]   Lasso                     0.819905     0.819136     0.000770     BALANCED
+[2026-09-16 12:51:44]   GradientBoosting          0.762470     0.751900     0.010570     BALANCED
+[2026-09-16 12:51:44]   DecisionTree              0.613589     0.620442     -0.006853    BALANCED
+[2026-09-16 12:51:44]   AdaBoost                  0.066883     0.063217     0.003665     HIGH BIAS (Underfit)
+[2026-09-16 12:51:44]   Dummy_Mean                0.000000     -0.000301    0.000301     HIGH BIAS (Underfit)
+[2026-09-16 12:51:44] 
+======================================================================
+[2026-09-16 12:51:44] STAGE 8.10: THEORETICAL FOUNDATION CHECK
+[2026-09-16 12:51:44] ======================================================================
+[2026-09-16 12:51:44]   Regression Models - Theoretical Basis:
+[2026-09-16 12:51:44]     - LinearRegression: Assumes linearity (violated in Phase 07)
+[2026-09-16 12:51:44]     - Ridge/Lasso: Linear + regularization (still assumes linearity)
+[2026-09-16 12:51:44]     - DecisionTree: Non-parametric, no distribution assumption
+[2026-09-16 12:51:44]     - RandomForest: Ensemble of trees, reduces variance
+[2026-09-16 12:51:44]     - GradientBoosting: Sequential ensemble, reduces bias
+[2026-09-16 12:51:44]     - XGBoost/LightGBM: Optimized gradient boosting
+[2026-09-16 12:51:44] 
+  Classification Models - Theoretical Basis:
+[2026-09-16 12:51:44]     - LogisticRegression: Assumes linear decision boundary
+[2026-09-16 12:51:44]     - DecisionTree: Non-parametric, handles non-linear
+[2026-09-16 12:51:44]     - RandomForest: Ensemble, handles imbalance via class_weight
+[2026-09-16 12:51:44]     - XGBoost: scale_pos_weight handles imbalance
+[2026-09-16 12:51:44]     - LightGBM: class_weight handles imbalance
+[2026-09-16 12:51:44] 
+  [RECOMMENDATION] Based on Phase 07 findings:
+[2026-09-16 12:51:44]     - Use tree-based models (RandomForest, XGBoost, LightGBM)
+[2026-09-16 12:51:44]     - Avoid linear models (linearity violated)
+[2026-09-16 12:51:44]     - Apply class_weight/scale_pos_weight for imbalance
+[2026-09-16 12:51:44] 
+======================================================================
+[2026-09-16 12:51:44] VISUALIZING RESULTS
+[2026-09-16 12:51:44] ======================================================================
+[2026-09-16 12:51:45]   [OK] Saved: 08_model_comparison.png
+[2026-09-16 12:51:45] 
+======================================================================
+[2026-09-16 12:51:45] PHASE 08 COMPLETE!
+[2026-09-16 12:51:45] ======================================================================

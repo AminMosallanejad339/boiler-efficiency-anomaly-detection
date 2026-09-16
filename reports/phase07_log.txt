@@ -1,0 +1,222 @@
+[2026-09-16 12:31:15] ======================================================================
+[2026-09-16 12:31:15] PHASE 07: ASSUMPTION CHECKING
+[2026-09-16 12:31:15] ======================================================================
+[2026-09-16 12:31:15] Train: (35063, 83)
+[2026-09-16 12:31:15] Validation: (7487, 83)
+[2026-09-16 12:31:15] Test: (7514, 83)
+[2026-09-16 12:31:15] Features: 80
+[2026-09-16 12:31:15] ======================================================================
+[2026-09-16 12:31:15] PHASE 07: ASSUMPTION CHECKING
+[2026-09-16 12:31:15] ======================================================================
+[2026-09-16 12:31:15] 
+======================================================================
+[2026-09-16 12:31:15] STAGE 7.1: ASSUMPTION CHECKING STRATEGY
+[2026-09-16 12:31:15] ======================================================================
+[2026-09-16 12:31:15]   Regression Assumptions:
+[2026-09-16 12:31:15]     - Linearity: Linear relationship between X and y
+[2026-09-16 12:31:15]     - Normality: Residuals are normally distributed
+[2026-09-16 12:31:15]     - Independence: Residuals are independent
+[2026-09-16 12:31:15]     - Homoscedasticity: Constant variance of residuals
+[2026-09-16 12:31:15]     - No Multicollinearity: Features are not highly correlated
+[2026-09-16 12:31:15]     - Stationarity: Time series is stationary
+[2026-09-16 12:31:15]   Classification Assumptions:
+[2026-09-16 12:31:15]     - Independence: Samples are independent
+[2026-09-16 12:31:15]     - Class Balance: Handled via Class Weight
+[2026-09-16 12:31:15]     - Feature Distribution: Checked per class
+[2026-09-16 12:31:15]   Test Methods:
+[2026-09-16 12:31:15]     Linearity: Pearson, Spearman, Kendall
+[2026-09-16 12:31:15]     Normality: Shapiro-Wilk, Anderson-Darling, KS
+[2026-09-16 12:31:15]     Independence: Durbin-Watson, Ljung-Box
+[2026-09-16 12:31:15]     Homoscedasticity: Levene, Bartlett, Breusch-Pagan
+[2026-09-16 12:31:15]     Multicollinearity: VIF
+[2026-09-16 12:31:15]     Stationarity: ADF, KPSS
+[2026-09-16 12:31:15] 
+======================================================================
+[2026-09-16 12:31:15] STAGE 7.2: LINEARITY CHECK
+[2026-09-16 12:31:15] ======================================================================
+[2026-09-16 12:31:16]   [OK] Saved: 07_02_linearity.csv
+[2026-09-16 12:31:16] 
+  Top 10 linear features (by |Pearson r|):
+[2026-09-16 12:31:16]     turbine_to_boiler_eff: Pearson=-0.134055, p=2.7486e-140
+[2026-09-16 12:31:16]     hour_cos: Pearson=-0.025567, p=1.6836e-06
+[2026-09-16 12:31:16]     enthalpy_drop: Pearson=-0.022349, p=2.8485e-05
+[2026-09-16 12:31:16]     Entalphy_Cold_Reheat_kjkg: Pearson=0.019637, p=2.3576e-04
+[2026-09-16 12:31:16]     ΔHP_isentropis_KjKg: Pearson=-0.018601, p=4.9555e-04
+[2026-09-16 12:31:16]     air_to_fuel_ratio: Pearson=-0.018032, p=7.3376e-04
+[2026-09-16 12:31:16]     day_of_month: Pearson=-0.016291, p=2.2839e-03
+[2026-09-16 12:31:16]     Cold_Reheat_Pressure_Mpa: Pearson=0.016109, p=2.5565e-03
+[2026-09-16 12:31:16]     Boiler_oxygen_level_: Pearson=-0.015863, p=2.9728e-03
+[2026-09-16 12:31:16]     High_exhaust_pressure_Mpa: Pearson=-0.014809, p=5.5518e-03
+[2026-09-16 12:31:16] 
+  Features with strong linear relationship (|r| > 0.5): 0
+[2026-09-16 12:31:16]   [CONCLUSION] NO strong linear relationships detected.
+[2026-09-16 12:31:16]   [IMPLICATION] Linear models may not perform well.
+[2026-09-16 12:31:16]   [RECOMMENDATION] Use tree-based or non-linear models.
+[2026-09-16 12:31:17]   [OK] Saved: 07_02_linearity_scatter.png
+[2026-09-16 12:31:17] 
+======================================================================
+[2026-09-16 12:31:17] STAGE 7.3: NORMALITY CHECK
+[2026-09-16 12:31:17] ======================================================================
+[2026-09-16 12:31:17]   [OK] Saved: 07_03_normality.csv
+[2026-09-16 12:31:17] 
+  Normal features: 7 / 81
+[2026-09-16 12:31:17] 
+  Target (Boiler_Eff_):
+[2026-09-16 12:31:17]     Shapiro p-value: 1.631069e-04
+[2026-09-16 12:31:17]     Skewness: -0.012458
+[2026-09-16 12:31:17]     Kurtosis: -0.201521
+[2026-09-16 12:31:17]     Normal? False
+[2026-09-16 12:31:17] 
+  [CONCLUSION] Majority of features are NOT normally distributed.
+[2026-09-16 12:31:17]   [IMPLICATION] Non-parametric tests are more appropriate.
+[2026-09-16 12:31:17]   [RECOMMENDATION] Use tree-based models (Random Forest, XGBoost).
+[2026-09-16 12:31:18]   [OK] Saved: 07_03_normality_qqplot.png
+[2026-09-16 12:31:18] 
+======================================================================
+[2026-09-16 12:31:18] STAGE 7.4: INDEPENDENCE CHECK
+[2026-09-16 12:31:18] ======================================================================
+[2026-09-16 12:31:18]   Durbin-Watson for Boiler_Eff_: 0.000000
+[2026-09-16 12:31:18]     Interpretation: Autocorrelation present
+[2026-09-16 12:31:20]   Ljung-Box Main_steam_flow_th: stat=26650.7962, p=0.0000e+00, Independent=False
+[2026-09-16 12:31:22]   Ljung-Box Boiler_oxygen_level_: stat=26879.2612, p=0.0000e+00, Independent=False
+[2026-09-16 12:31:24]   Ljung-Box Flue_gas_temperature_: stat=26670.6631, p=0.0000e+00, Independent=False
+[2026-09-16 12:31:26]   Ljung-Box CO_mgm3: stat=26767.9944, p=0.0000e+00, Independent=False
+[2026-09-16 12:31:26]   [OK] Saved: 07_04_independence.csv
+[2026-09-16 12:31:36]   [OK] Saved: 07_04_acf_plots.png
+[2026-09-16 12:31:36] 
+======================================================================
+[2026-09-16 12:31:36] STAGE 7.5: HOMOSCEDASTICITY CHECK
+[2026-09-16 12:31:36] ======================================================================
+[2026-09-16 12:31:36]   [OK] Saved: 07_05_homoscedasticity.csv
+[2026-09-16 12:31:36]   Homoscedastic features: 17 / 20
+[2026-09-16 12:31:36] 
+  Top 10 homoscedastic features:
+[2026-09-16 12:31:36]     Superheater_desuperheating_water_flow_th: Levene p=9.9492e-01
+[2026-09-16 12:31:36]     Feedwater_temperature_: Levene p=7.7885e-01
+[2026-09-16 12:31:36]     Main_steam_pressure_turbine_side_MPa: Levene p=7.5022e-01
+[2026-09-16 12:31:36]     Boiler_oxygen_level_: Levene p=6.3880e-01
+[2026-09-16 12:31:36]     Reheat_steam_temperature_boiler_side_: Levene p=6.0585e-01
+[2026-09-16 12:31:36]     Main_steam_flow_th: Levene p=4.8334e-01
+[2026-09-16 12:31:36]     Reheat_steam_pressure_turbine_side_MPa: Levene p=4.5546e-01
+[2026-09-16 12:31:36]     Circulating_water_outlet_temperature_: Levene p=4.1063e-01
+[2026-09-16 12:31:36]     Main_steam_temperature_turbine_side_: Levene p=3.3540e-01
+[2026-09-16 12:31:36]     Main_steam_temperature_boiler_side_: Levene p=3.0237e-01
+[2026-09-16 12:31:36]   [OK] Saved: 07_05_residuals.png
+[2026-09-16 12:31:36] 
+======================================================================
+[2026-09-16 12:31:36] STAGE 7.6: MULTICOLLINEARITY CHECK (VIF)
+[2026-09-16 12:31:36] ======================================================================
+[2026-09-16 12:31:37]   [OK] Saved: 07_06_vif.csv
+[2026-09-16 12:31:37] 
+  VIF Results (Top 20 features):
+[2026-09-16 12:31:37]     Entalphy_Cold_Reheat_kjkg: VIF=inf [HIGH]
+[2026-09-16 12:31:37]     enthalpy_drop: VIF=inf [HIGH]
+[2026-09-16 12:31:37]     Entalphy_inlet_MS_kjkg: VIF=inf [HIGH]
+[2026-09-16 12:31:37]     Entalphy_Isentropis_Cold_Reheat_kjkg: VIF=1267976.7959 [HIGH]
+[2026-09-16 12:31:37]     ΔHP_isentropis_KjKg: VIF=167231.6124 [HIGH]
+[2026-09-16 12:31:37]     Condenser_vacuum_kPa: VIF=149414.7914 [HIGH]
+[2026-09-16 12:31:37]     turbine_to_boiler_eff: VIF=54974.0832 [HIGH]
+[2026-09-16 12:31:37]     Boiler_oxygen_level_: VIF=38323.7721 [HIGH]
+[2026-09-16 12:31:37]     Cold_Reheat_Pressure_Mpa: VIF=33804.2950 [HIGH]
+[2026-09-16 12:31:37]     High_exhaust_pressure_Mpa: VIF=32514.7086 [HIGH]
+[2026-09-16 12:31:37]     NPHR_KcalKwh: VIF=29082.3259 [HIGH]
+[2026-09-16 12:31:37]     air_to_fuel_ratio: VIF=24810.1980 [HIGH]
+[2026-09-16 12:31:37]     energy_per_coal: VIF=13148.2539 [HIGH]
+[2026-09-16 12:31:37]     Temp_C: VIF=395.3041 [HIGH]
+[2026-09-16 12:31:37]     heat_rate_deviation: VIF=63.9341 [HIGH]
+[2026-09-16 12:31:37]     Boiler_oxygen_level__bin: VIF=28.8857 [HIGH]
+[2026-09-16 12:31:37]     day_of_month: VIF=4.1773 [OK]
+[2026-09-16 12:31:37]     hour: VIF=3.7986 [OK]
+[2026-09-16 12:31:37]     hour_cos: VIF=1.0120 [OK]
+[2026-09-16 12:31:37]     dow_sin: VIF=1.0023 [OK]
+[2026-09-16 12:31:37] 
+  Features with VIF > 10: 16
+[2026-09-16 12:31:37]   [CONCLUSION] Multicollinearity detected!
+[2026-09-16 12:31:37]   [RECOMMENDATION] Remove or combine high-VIF features.
+[2026-09-16 12:31:37] 
+======================================================================
+[2026-09-16 12:31:37] STAGE 7.7: STATIONARITY CHECK
+[2026-09-16 12:31:37] ======================================================================
+[2026-09-16 12:31:39]   Boiler_Eff_:
+[2026-09-16 12:31:39]     ADF: stat=-48.5501, p=0.0000e+00, Stationary=True
+[2026-09-16 12:31:39]     KPSS: stat=0.1001, p=1.0000e-01, Stationary=True
+[2026-09-16 12:31:42]   Main_steam_flow_th:
+[2026-09-16 12:31:42]     ADF: stat=-49.1190, p=0.0000e+00, Stationary=True
+[2026-09-16 12:31:42]     KPSS: stat=0.2662, p=1.0000e-01, Stationary=True
+[2026-09-16 12:31:44]   Boiler_oxygen_level_:
+[2026-09-16 12:31:44]     ADF: stat=-46.7595, p=0.0000e+00, Stationary=True
+[2026-09-16 12:31:44]     KPSS: stat=0.0526, p=1.0000e-01, Stationary=True
+[2026-09-16 12:31:46]   Flue_gas_temperature_:
+[2026-09-16 12:31:46]     ADF: stat=-45.9191, p=0.0000e+00, Stationary=True
+[2026-09-16 12:31:46]     KPSS: stat=0.1714, p=1.0000e-01, Stationary=True
+[2026-09-16 12:31:48]   CO_mgm3:
+[2026-09-16 12:31:48]     ADF: stat=-49.1940, p=0.0000e+00, Stationary=True
+[2026-09-16 12:31:48]     KPSS: stat=0.0545, p=1.0000e-01, Stationary=True
+[2026-09-16 12:31:50]   Coal_Flow_th:
+[2026-09-16 12:31:50]     ADF: stat=-48.9984, p=0.0000e+00, Stationary=True
+[2026-09-16 12:31:50]     KPSS: stat=0.0588, p=1.0000e-01, Stationary=True
+[2026-09-16 12:31:50]   [OK] Saved: 07_07_stationarity.csv
+[2026-09-16 12:31:50] 
+  Stationary features: 6 / 6
+[2026-09-16 12:31:50] 
+======================================================================
+[2026-09-16 12:31:50] STAGE 7.8: DISTRIBUTION CHECK
+[2026-09-16 12:31:50] ======================================================================
+[2026-09-16 12:31:50]   Target (Boiler_Eff_) distribution:
+[2026-09-16 12:31:50]     Mean: 93.674285
+[2026-09-16 12:31:50]     Median: 93.674349
+[2026-09-16 12:31:50]     Std: 0.050466
+[2026-09-16 12:31:50]     Skewness: -0.012458
+[2026-09-16 12:31:50]     Kurtosis: -0.201521
+[2026-09-16 12:31:50]     Range: [93.535866, 93.812718]
+[2026-09-16 12:31:50] 
+  Class distribution:
+[2026-09-16 12:31:50]     Class 0: 34520 (98.4514%)
+[2026-09-16 12:31:50]     Class 1: 543 (1.5486%)
+[2026-09-16 12:31:50]     Imbalance ratio: 63.57
+[2026-09-16 12:31:51]   [OK] Saved: 07_08_distribution.png
+[2026-09-16 12:31:51] 
+======================================================================
+[2026-09-16 12:31:51] STAGE 7.9: HYPOTHESIS TESTING (Pre-Model)
+[2026-09-16 12:31:51] ======================================================================
+[2026-09-16 12:31:51]   H1: Significant correlation between features and target
+[2026-09-16 12:31:51] 
+  H2: Significant difference between Anomaly and Normal
+[2026-09-16 12:31:51] 
+  H3: Significant difference in Boiler_Eff_ between Normal and Anomaly
+[2026-09-16 12:31:51]     T-Test: stat=3.0996, p=1.9393e-03
+[2026-09-16 12:31:51]   [OK] Saved: 07_09_hypothesis_testing.csv
+[2026-09-16 12:31:51] 
+  Total hypotheses tested: 24
+[2026-09-16 12:31:51]   Rejected (p < 0.05): 6
+[2026-09-16 12:31:51]   Not rejected: 18
+[2026-09-16 12:31:51] 
+======================================================================
+[2026-09-16 12:31:51] STAGE 7.10: ASSUMPTION VALIDATION
+[2026-09-16 12:31:51] ======================================================================
+[2026-09-16 12:31:51]   [OK] Saved: 07_10_validation.csv
+[2026-09-16 12:31:51] 
+  Assumption Validation Summary:
+[2026-09-16 12:31:51]     Linearity: NOT SATISFIED
+[2026-09-16 12:31:51]       -> Use non-linear models (RF, XGBoost)
+[2026-09-16 12:31:51]     Normality: NOT SATISFIED
+[2026-09-16 12:31:51]       -> Use non-parametric tests
+[2026-09-16 12:31:51]     Independence: NOT SATISFIED
+[2026-09-16 12:31:51]       -> Autocorrelation present
+[2026-09-16 12:31:51]     Homoscedasticity: SATISFIED
+[2026-09-16 12:31:51]       -> Use robust standard errors
+[2026-09-16 12:31:51]     Multicollinearity: NOT SATISFIED (16 features)
+[2026-09-16 12:31:51]       -> Remove high-VIF features
+[2026-09-16 12:31:51]     Stationarity: SATISFIED
+[2026-09-16 12:31:51]       -> Apply differencing if needed
+[2026-09-16 12:31:51] 
+  [RECOMMENDATIONS]
+[2026-09-16 12:31:51]     1. Use tree-based models (Random Forest, XGBoost, LightGBM)
+[2026-09-16 12:31:51]     2. Use non-parametric tests
+[2026-09-16 12:31:51]     3. Handle multicollinearity if VIF > 10
+[2026-09-16 12:31:51]     4. Use TimeSeriesSplit for CV
+[2026-09-16 12:31:51]     5. Apply Class Weight for imbalanced classification
+[2026-09-16 12:31:51] 
+======================================================================
+[2026-09-16 12:31:51] PHASE 07 COMPLETE!
+[2026-09-16 12:31:51] ======================================================================

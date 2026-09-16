@@ -1,0 +1,9 @@
+ID,Category,Insight,Implication,Severity
+INS-01,CRITICAL - Weak Correlation,Strongest feature correlation with Target is only -0.0170,Regression modeling on Boiler_Eff_ will be challenging,HIGH
+INS-02,CRITICAL - Narrow Target Range,Boiler_Eff_ range is only 0.2769 (Std: 0.0507),Very small variance limits regression performance,HIGH
+INS-03,Class Imbalance,Anomaly rate is 1.5093% (imbalance ratio 65:1),Requires SMOTE or class weighting for classification,MEDIUM
+INS-04,Anomaly Indicator,APH_Leakage_ shows -54.22% difference between anomaly and normal records,Strongest anomaly indicator; will be key feature,INFO
+INS-05,Multicollinearity,No pairs with |corr| > 0.9 detected,Low multicollinearity risk; VIF check in Phase 07,INFO
+INS-06,Distribution,Shapiro-Wilk test rejected normality (p = 0.00034),Non-parametric tests may be more appropriate,LOW
+INS-07,Temporal Stability,Average Boiler_Eff_ is nearly identical across all days (93.67),No day-of-week effect; no shift-based patterns,LOW
+INS-08,Target vs Anomaly,Correlation between Boiler_Eff_ and Anomaly_Label is only -0.0053,Anomalies do not significantly affect boiler efficiency,INFO

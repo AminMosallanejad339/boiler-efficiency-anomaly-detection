@@ -1,0 +1,6 @@
+Test,Result,Status
+Residual Analysis,"Score Mean=0.4438, Std=0.0247",OK
+Normality (Shapiro-Wilk),p=5.3198e-57,NOT NORMAL
+Heteroscedasticity (Levene),p=0.0000e+00,HETEROSCEDASTIC
+Autocorrelation (Durbin-Watson),DW=0.0024,AUTOCORR
+Multicollinearity (VIF),High VIF: 0/4,OK

@@ -1,0 +1,5 @@
+Feature,Baseline_F1,Permuted_F1_Mean,Permuted_F1_Std,Importance
+Reheater_desuperheating_water_flow_th_raw,0.44375,0.287119,0.020511,0.156631
+APH_Leakage__raw,0.44375,0.296594,0.014306,0.147156
+CO_mgm3_raw,0.44375,0.334007,0.01184,0.109743
+Dust_mgm3_raw,0.44375,0.390139,0.011623,0.053611

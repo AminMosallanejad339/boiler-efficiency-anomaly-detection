@@ -1,0 +1,52 @@
+[2026-09-16 12:17:20] ======================================================================
+[2026-09-16 12:17:20] PHASE 04b: EDA FIX (Stages 4.8, 4.9, 4.10)
+[2026-09-16 12:17:20] ======================================================================
+[2026-09-16 12:17:21] Loaded: 50091 rows x 58 columns
+[2026-09-16 12:17:21] ======================================================================
+[2026-09-16 12:17:21] PHASE 04b: EDA FIX
+[2026-09-16 12:17:21] ======================================================================
+[2026-09-16 12:17:21] 
+======================================================================
+[2026-09-16 12:17:21] STAGE 4.8: ANOMALY DETECTION (FIXED)
+[2026-09-16 12:17:21] ======================================================================
+[2026-09-16 12:17:21]   Anomaly records: 756 (1.5093%)
+[2026-09-16 12:17:21]   Normal records: 49335 (98.4907%)
+[2026-09-16 12:17:21]   [OK] Saved: 04_08_anomaly_vs_normal.csv
+[2026-09-16 12:17:21] 
+  Top 10 features with largest difference (Anomaly vs Normal):
+[2026-09-16 12:17:21]     APH_Leakage_: Normal=2.1935, Anomaly=1.0041, Diff=54.22%
+[2026-09-16 12:17:21]     CO_mgm3: Normal=261.9036, Anomaly=197.6948, Diff=24.52%
+[2026-09-16 12:17:21]     Reheater_desuperheating_water_flow_th: Normal=2.7507, Anomaly=2.2224, Diff=19.20%
+[2026-09-16 12:17:21]     Dust_mgm3: Normal=14.4912, Anomaly=13.9075, Diff=4.03%
+[2026-09-16 12:17:21]     SO2_mgm3: Normal=437.4841, Anomaly=438.6076, Diff=0.26%
+[2026-09-16 12:17:21]     Feedwater_temperature_: Normal=235.2774, Anomaly=235.8088, Diff=0.23%
+[2026-09-16 12:17:21]     O2_Out_APH_: Normal=5.1097, Anomaly=5.1183, Diff=0.17%
+[2026-09-16 12:17:21]     Pressure_Kpa: Normal=-0.2425, Anomaly=-0.2429, Diff=0.15%
+[2026-09-16 12:17:21]     Temp_C: Normal=94.6262, Anomaly=94.7511, Diff=0.13%
+[2026-09-16 12:17:21]     Boiler_oxygen_level_: Normal=4.7328, Anomaly=4.7381, Diff=0.11%
+[2026-09-16 12:17:21]   [OK] Saved: 04_08_anomaly_comparison.png
+[2026-09-16 12:17:21] 
+======================================================================
+[2026-09-16 12:17:21] STAGE 4.9: VISUALIZATION SUMMARY
+[2026-09-16 12:17:21] ======================================================================
+[2026-09-16 12:17:21]   Generating pairplot for: ['Boiler_Eff_', 'Corrected_Flue_Gas_Out_Temperature_C', 'Main_steam_flow_th', 'Cold_Reheat_Pressure_Mpa', 'CO_mgm3', 'Boiler_Eff_']
+[2026-09-16 12:17:21]   [WARNING] Pairplot failed: Data must be 1-dimensional, got ndarray of shape (2000, 2) instead
+[2026-09-16 12:17:21] 
+======================================================================
+[2026-09-16 12:17:21] STAGE 4.10: INSIGHT EXTRACTION
+[2026-09-16 12:17:21] ======================================================================
+[2026-09-16 12:17:21]   [OK] Saved: 04_10_insights.csv
+[2026-09-16 12:17:21] 
+  Extracted 8 key insights:
+[2026-09-16 12:17:21]     [INS-01] [HIGH] CRITICAL - Weak Correlation: Strongest feature correlation with Target is only -0.0170
+[2026-09-16 12:17:21]     [INS-02] [HIGH] CRITICAL - Narrow Target Range: Boiler_Eff_ range is only 0.2769 (Std: 0.0507)
+[2026-09-16 12:17:21]     [INS-03] [MEDIUM] Class Imbalance: Anomaly rate is 1.5093% (imbalance ratio 65:1)
+[2026-09-16 12:17:21]     [INS-04] [INFO] Anomaly Indicator: APH_Leakage_ shows -54.22% difference between anomaly and normal records
+[2026-09-16 12:17:21]     [INS-05] [INFO] Multicollinearity: No pairs with |corr| > 0.9 detected
+[2026-09-16 12:17:21]     [INS-06] [LOW] Distribution: Shapiro-Wilk test rejected normality (p = 0.00034)
+[2026-09-16 12:17:21]     [INS-07] [LOW] Temporal Stability: Average Boiler_Eff_ is nearly identical across all days (93.67)
+[2026-09-16 12:17:21]     [INS-08] [INFO] Target vs Anomaly: Correlation between Boiler_Eff_ and Anomaly_Label is only -0.0053
+[2026-09-16 12:17:21] 
+======================================================================
+[2026-09-16 12:17:21] PHASE 04 COMPLETE!
+[2026-09-16 12:17:21] ======================================================================

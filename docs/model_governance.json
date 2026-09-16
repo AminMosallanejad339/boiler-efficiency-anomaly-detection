@@ -1,0 +1,28 @@
+{
+  "Owner": "Amin Mosallanejad",
+  "Steward": "Data Science Team",
+  "Review_Cycle": "Quarterly",
+  "Monitoring": {
+    "Frequency": "Weekly",
+    "Metrics": [
+      "F1",
+      "Precision",
+      "Recall",
+      "FPR"
+    ],
+    "Thresholds": {
+      "F1_Min": 0.35,
+      "Precision_Min": 0.3,
+      "Recall_Min": 0.45
+    }
+  },
+  "Retraining_Trigger": {
+    "Performance_Drop": "F1 < 0.35",
+    "Data_Drift": "PSI > 0.25",
+    "Time_Based": "6 months"
+  },
+  "Incident_Response": {
+    "Contact": "Data Science Team",
+    "Escalation": "Plant Manager"
+  }
+}

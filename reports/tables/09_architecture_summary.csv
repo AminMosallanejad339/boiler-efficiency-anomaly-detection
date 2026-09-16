@@ -1,0 +1,14 @@
+Metric,Value
+Architecture,MLP
+Anomaly_Input,78
+Anomaly_Output,1
+Anomaly_Activation,Sigmoid
+Binned_Input,79
+Binned_Output,3
+Binned_Activation,Softmax
+Hidden_Layers,"128, 64, 32"
+Dropout,"0.3, 0.3, 0.2"
+BatchNorm,Yes
+L2_Regularization,1e-4
+Total_Params_Anomaly,21377
+Total_Params_Binned,21571

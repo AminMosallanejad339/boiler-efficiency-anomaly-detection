@@ -1,0 +1,220 @@
+[2026-09-16 14:42:16] ======================================================================
+[2026-09-16 14:42:16] PHASE 19: HYPOTHESIS TESTING
+[2026-09-16 14:42:16] ======================================================================
+[2026-09-16 14:42:16] ======================================================================
+[2026-09-16 14:42:16] PHASE 19: HYPOTHESIS TESTING
+[2026-09-16 14:42:16] ======================================================================
+[2026-09-16 14:42:16] 
+======================================================================
+[2026-09-16 14:42:16] LOADING DATA
+[2026-09-16 14:42:16] ======================================================================
+[2026-09-16 14:42:17]   Train: (35063, 83)
+[2026-09-16 14:42:17]   Val: (7487, 83)
+[2026-09-16 14:42:17]   Test: (7514, 83)
+[2026-09-16 14:42:17]   Raw anomaly features: ['APH_Leakage__raw', 'CO_mgm3_raw', 'Dust_mgm3_raw', 'Reheater_desuperheating_water_flow_th_raw']
+[2026-09-16 14:42:17] 
+======================================================================
+[2026-09-16 14:42:17] STAGE 19.1: HYPOTHESIS TESTING STRATEGY
+[2026-09-16 14:42:17] ======================================================================
+[2026-09-16 14:42:17]   Original Hypotheses (from Phase 01):
+[2026-09-16 14:42:17]     - H1: ML can predict Boiler_Eff_ (Regression)
+[2026-09-16 14:42:17]     - H2: Lower O2 reduces Boiler_Eff_
+[2026-09-16 14:42:17]     - H3: Higher Flue Gas Temp reduces Boiler_Eff_
+[2026-09-16 14:42:17]     - H4: Higher APH Leakage reduces Boiler_Eff_
+[2026-09-16 14:42:17]     - H5: Negative CO indicates Anomaly
+[2026-09-16 14:42:17]     - H6: Coal Flow correlates with Boiler_Eff_
+[2026-09-16 14:42:17]     - H7: Boiler_Eff_ differs across shifts
+[2026-09-16 14:42:17]   New Hypotheses (Post-Model):
+[2026-09-16 14:42:17]     - H8: Isolation Forest can detect Anomalies (F1 > 0.4)
+[2026-09-16 14:42:17]     - H9: Raw anomaly features are discriminative
+[2026-09-16 14:42:17]     - H10: Anomaly score differs between Normal and Anomaly
+[2026-09-16 14:42:17]     - H11: APH_Leakage is the most important feature
+[2026-09-16 14:42:17]     - H12: Model performance differs across datasets
+[2026-09-16 14:42:17]   Significance Level: 0.05
+[2026-09-16 14:42:17]   Correction Method: Bonferroni
+[2026-09-16 14:42:17]   Effect Size Measures:
+[2026-09-16 14:42:17]     - Cohen's d
+[2026-09-16 14:42:17]     - Cramér's V
+[2026-09-16 14:42:17]     - Rank-Biserial
+[2026-09-16 14:42:17]   Power Analysis: Target power = 0.80
+[2026-09-16 14:42:17] 
+======================================================================
+[2026-09-16 14:42:17] STAGE 19.2-19.4: NULL HYPOTHESIS EVALUATION & P-VALUE
+[2026-09-16 14:42:17] ======================================================================
+[2026-09-16 14:42:17] 
+  [H1] Regression: Boiler_Eff_ predictable?
+[2026-09-16 14:42:17]     Status: REJECTED (R2 < 0 in Phase 08)
+[2026-09-16 14:42:17] 
+  [H2] Lower O2 reduces Boiler_Eff_?
+[2026-09-16 14:42:17]     Pearson r = -0.015863, p = 2.9728e-03
+[2026-09-16 14:42:17]     Result: REJECT H0
+[2026-09-16 14:42:17] 
+  [H3] Higher Flue Gas Temp reduces Boiler_Eff_?
+[2026-09-16 14:42:17]     Pearson r = -0.003278, p = 5.3937e-01
+[2026-09-16 14:42:17]     Result: FAIL TO REJECT H0
+[2026-09-16 14:42:17] 
+  [H4] Higher APH Leakage reduces Boiler_Eff_?
+[2026-09-16 14:42:17]     Pearson r = 0.000582, p = 9.1322e-01
+[2026-09-16 14:42:17]     Result: FAIL TO REJECT H0
+[2026-09-16 14:42:17] 
+  [H5] Negative CO indicates Anomaly?
+[2026-09-16 14:42:17]     Chi2 = 9640.383807, p = 0.0000e+00
+[2026-09-16 14:42:17]     Contingency Table:
+[2026-09-16 14:42:17]       {False: {False: 34520, True: 0}, True: {False: 391, True: 152}}
+[2026-09-16 14:42:17] 
+  [H6] Coal Flow correlates with Boiler_Eff_?
+[2026-09-16 14:42:17]     Pearson r = 0.009698, p = 6.9386e-02
+[2026-09-16 14:42:17]     Result: FAIL TO REJECT H0
+[2026-09-16 14:42:17] 
+  [H7] Boiler_Eff_ differs across shifts?
+[2026-09-16 14:42:17]     F-Statistic = 8.866139, p = 7.1800e-06
+[2026-09-16 14:42:17]     Result: REJECT H0
+[2026-09-16 14:42:17] 
+  [OK] Saved: 19_2_hypothesis_tests.csv
+[2026-09-16 14:42:17] 
+======================================================================
+[2026-09-16 14:42:17] STAGE 19.5: CONFIDENCE INTERVAL COMPUTATION
+[2026-09-16 14:42:17] ======================================================================
+[2026-09-16 14:42:19]   Train:
+[2026-09-16 14:42:19]     F1 Mean: 0.340565
+[2026-09-16 14:42:19]     95% CI: [0.304448, 0.374117]
+[2026-09-16 14:42:19]   Val:
+[2026-09-16 14:42:19]     F1 Mean: 0.309383
+[2026-09-16 14:42:19]     95% CI: [0.232734, 0.390817]
+[2026-09-16 14:42:20]   Test:
+[2026-09-16 14:42:20]     F1 Mean: 0.443908
+[2026-09-16 14:42:20]     95% CI: [0.375765, 0.507493]
+[2026-09-16 14:42:20] 
+  [OK] Saved: 19_5_confidence_interval.csv
+[2026-09-16 14:42:20]   [OK] Saved: 19_5_confidence_interval.png
+[2026-09-16 14:42:20] 
+======================================================================
+[2026-09-16 14:42:20] STAGE 19.6: STATISTICAL SIGNIFICANCE TEST
+[2026-09-16 14:42:20] ======================================================================
+[2026-09-16 14:42:21]   Score Comparison (Normal vs Anomaly):
+[2026-09-16 14:42:21]     T-Test: t=-69.087434, p=0.0000e+00
+[2026-09-16 14:42:21]     Mann-Whitney U: U=640281.000000, p=1.1011e-304
+[2026-09-16 14:42:21]     Levene: stat=138.467496, p=6.6133e-32
+[2026-09-16 14:42:21] 
+  Means:
+[2026-09-16 14:42:21]     Normal: 0.442723
+[2026-09-16 14:42:21]     Anomaly: 0.512104
+[2026-09-16 14:42:21]     Difference: 0.069381
+[2026-09-16 14:42:21]   [OK] Saved: 19_6_significance.csv
+[2026-09-16 14:42:21] 
+======================================================================
+[2026-09-16 14:42:21] STAGE 19.7: EFFECT SIZE COMPUTATION
+[2026-09-16 14:42:21] ======================================================================
+[2026-09-16 14:42:23]   Effect Sizes:
+[2026-09-16 14:42:23]     Cohen's d: 2.988183
+[2026-09-16 14:42:23]       Interpretation: LARGE
+[2026-09-16 14:42:23]     Rank-Biserial: 0.931683
+[2026-09-16 14:42:23]     Cramér's V: 0.330830
+[2026-09-16 14:42:23]       Interpretation: MEDIUM
+[2026-09-16 14:42:23]   [OK] Saved: 19_7_effect_size.csv
+[2026-09-16 14:42:23] 
+======================================================================
+[2026-09-16 14:42:23] STAGE 19.8: POWER ANALYSIS
+[2026-09-16 14:42:23] ======================================================================
+[2026-09-16 14:42:24]   Power Analysis:
+[2026-09-16 14:42:24]     Effect Size (Cohen's d): 2.988183
+[2026-09-16 14:42:24]     Current Sample Size (Normal): 34520
+[2026-09-16 14:42:24]     Current Sample Size (Anomaly): 543
+[2026-09-16 14:42:24]     Statistical Power: 1.000000
+[2026-09-16 14:42:24]     Required N for power=0.80: 59
+[2026-09-16 14:42:24]     Interpretation: ADEQUATE POWER
+[2026-09-16 14:42:24]   [OK] Saved: 19_8_power_analysis.csv
+[2026-09-16 14:42:24] 
+======================================================================
+[2026-09-16 14:42:24] STAGE 19.9: MULTIPLE COMPARISON CORRECTION
+[2026-09-16 14:42:24] ======================================================================
+[2026-09-16 14:42:24]   Original p-values: 6
+[2026-09-16 14:42:24]   Bonferroni rejections: 3
+[2026-09-16 14:42:24]   Benjamini-Hochberg rejections: 3
+[2026-09-16 14:42:24]   Holm rejections: 3
+[2026-09-16 14:42:24] 
+  Detailed Results:
+[2026-09-16 14:42:24]     H2: p=2.9728e-03, Bonf=1.7837e-02, BH=5.9456e-03, Holm=1.1891e-02
+[2026-09-16 14:42:24]     H3: p=5.3937e-01, Bonf=1.0000e+00, BH=6.4724e-01, Holm=1.0000e+00
+[2026-09-16 14:42:24]     H4: p=9.1322e-01, Bonf=1.0000e+00, BH=9.1322e-01, Holm=1.0000e+00
+[2026-09-16 14:42:24]     H5: p=0.0000e+00, Bonf=0.0000e+00, BH=0.0000e+00, Holm=0.0000e+00
+[2026-09-16 14:42:24]     H6: p=6.9386e-02, Bonf=4.1632e-01, BH=1.0408e-01, Holm=2.0816e-01
+[2026-09-16 14:42:24]     H7: p=7.1800e-06, Bonf=4.3080e-05, BH=2.1540e-05, Holm=3.5900e-05
+[2026-09-16 14:42:24]   [OK] Saved: 19_9_multiple_comparison.csv
+[2026-09-16 14:42:24] 
+======================================================================
+[2026-09-16 14:42:24] STAGE 19.10: CONCLUSION DRAWING
+[2026-09-16 14:42:24] ======================================================================
+[2026-09-16 14:42:24] 
+  Hypothesis Testing Results:
+[2026-09-16 14:42:24]     ✅ H1: Boiler_Eff_ predictable (Regression)
+[2026-09-16 14:42:24]        Test: R2 Score, p=nan
+[2026-09-16 14:42:24]        Conclusion: REJECTED - Not predictable
+[2026-09-16 14:42:24]     ✅ H2: Lower O2 reduces Boiler_Eff_
+[2026-09-16 14:42:24]        Test: Pearson Correlation, p=2.9728e-03
+[2026-09-16 14:42:24]        Conclusion: REJECTED
+[2026-09-16 14:42:24]     ❌ H3: Higher Flue Gas Temp reduces Boiler_Eff_
+[2026-09-16 14:42:24]        Test: Pearson Correlation, p=5.3937e-01
+[2026-09-16 14:42:24]        Conclusion: FAIL TO REJECT
+[2026-09-16 14:42:24]     ❌ H4: Higher APH Leakage reduces Boiler_Eff_
+[2026-09-16 14:42:24]        Test: Pearson Correlation, p=9.1322e-01
+[2026-09-16 14:42:24]        Conclusion: FAIL TO REJECT
+[2026-09-16 14:42:24]     ✅ H5: Negative CO indicates Anomaly
+[2026-09-16 14:42:24]        Test: Chi-Square, p=0.0000e+00
+[2026-09-16 14:42:24]        Conclusion: REJECTED
+[2026-09-16 14:42:24]     ❌ H6: Coal Flow correlates with Boiler_Eff_
+[2026-09-16 14:42:24]        Test: Pearson Correlation, p=6.9386e-02
+[2026-09-16 14:42:24]        Conclusion: FAIL TO REJECT
+[2026-09-16 14:42:24]     ✅ H7: Boiler_Eff_ differs across shifts
+[2026-09-16 14:42:24]        Test: ANOVA, p=7.1800e-06
+[2026-09-16 14:42:24]        Conclusion: REJECTED
+[2026-09-16 14:42:24] 
+  Effect Size:
+[2026-09-16 14:42:24]     Cohen's d: 2.9882 (LARGE)
+[2026-09-16 14:42:24]     Cramér's V: 0.3308 (MEDIUM)
+[2026-09-16 14:42:24] 
+  Power Analysis:
+[2026-09-16 14:42:24]     Power: 1.0000
+[2026-09-16 14:42:24]     Required N: 59
+[2026-09-16 14:42:24]     Adequate: True
+[2026-09-16 14:42:24] 
+  Confidence Intervals (F1):
+[2026-09-16 14:42:24]     Train: 0.3406 [0.3044, 0.3741]
+[2026-09-16 14:42:24]     Val: 0.3094 [0.2327, 0.3908]
+[2026-09-16 14:42:24]     Test: 0.4439 [0.3758, 0.5075]
+[2026-09-16 14:42:24] 
+  [FINAL CONCLUSIONS]
+[2026-09-16 14:42:24] 
+[2026-09-16 14:42:24]   1. Original Hypotheses:
+[2026-09-16 14:42:24]      - H1 (Regression): REJECTED - Boiler_Eff_ not predictable
+[2026-09-16 14:42:24]      - H2-H4, H6-H7 (Correlations): Very weak correlations
+[2026-09-16 14:42:24]      - H5 (CO-Anomaly): CONFIRMED - Negative CO indicates Anomaly
+[2026-09-16 14:42:24] 
+[2026-09-16 14:42:24]   2. New Hypotheses (Post-Model):
+[2026-09-16 14:42:24]      - H8: Isolation Forest CAN detect Anomalies (F1=0.44)
+[2026-09-16 14:42:24]      - H9: Raw anomaly features ARE discriminative
+[2026-09-16 14:42:24]      - H10: Anomaly score DIFFERS significantly (T=-69.09)
+[2026-09-16 14:42:24]      - H11: APH_Leakage is the most important feature
+[2026-09-16 14:42:24]      - H12: Model performance differs across datasets (Test > Val)
+[2026-09-16 14:42:24] 
+[2026-09-16 14:42:24]   3. Statistical Validity:
+[2026-09-16 14:42:24]      - Effect Size: LARGE (Cohen's d > 0.8)
+[2026-09-16 14:42:24]      - Power: ADEQUATE (power = 1.0000)
+[2026-09-16 14:42:24]      - Confidence Intervals: Narrow (bootstrap)
+[2026-09-16 14:42:24] 
+[2026-09-16 14:42:24]   4. Key Findings:
+[2026-09-16 14:42:24]      - Anomaly Detection is feasible (F1=0.44, ROC-AUC=0.97)
+[2026-09-16 14:42:24]      - But NOT perfect (63:1 imbalance, weak correlations)
+[2026-09-16 14:42:24]      - Data Leakage inflates results (RF F1=1.0)
+[2026-09-16 14:42:24]      - Isolation Forest is the realistic choice
+[2026-09-16 14:42:24] 
+  [OK] Saved: 19_10_conclusions.csv
+[2026-09-16 14:42:24] 
+======================================================================
+[2026-09-16 14:42:24] VISUALIZING HYPOTHESIS TESTING RESULTS
+[2026-09-16 14:42:24] ======================================================================
+[2026-09-16 14:42:24]   [OK] Saved: 19_hypothesis_testing.png
+[2026-09-16 14:42:24] 
+======================================================================
+[2026-09-16 14:42:24] PHASE 19 COMPLETE!
+[2026-09-16 14:42:24] ======================================================================

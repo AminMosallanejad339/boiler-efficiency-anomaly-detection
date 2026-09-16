@@ -1,0 +1,7 @@
+Parameter,Value
+Method,Isolation Forest
+Best_Contamination,0.05
+Val_F1,0.161074
+Val_Precision,0.099723
+Val_Recall,0.418605
+Features_Used,"APH_Leakage__raw, CO_mgm3_raw, Dust_mgm3_raw, Reheater_desuperheating_water_flow_th_raw"

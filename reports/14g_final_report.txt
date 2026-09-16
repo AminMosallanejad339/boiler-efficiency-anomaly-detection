@@ -1,0 +1,52 @@
+======================================================================
+ANOMALY DETECTION - FINAL REPORT
+======================================================================
+
+Date: 2026-09-16 14:25:18
+
+MODEL COMPARISON:
+----------------------------------------------------------------------
+Random_Forest             | Val   | F1=1.000000 | P=1.000000 | R=1.000000
+Random_Forest             | Test  | F1=1.000000 | P=1.000000 | R=1.000000
+Isolation_Forest          | Val   | F1=0.161074 | P=0.099723 | R=0.418605
+Isolation_Forest          | Test  | F1=0.231827 | P=0.154450 | R=0.464567
+MLP                       | Val   | F1=0.000000 | P=0.000000 | R=0.000000
+MLP                       | Test  | F1=0.000000 | P=0.000000 | R=0.000000
+AdaBoost (Leaky)          | Val   | F1=0.988235 | P=1.000000 | R=0.976744
+
+
+DATA LEAKAGE ANALYSIS:
+----------------------------------------------------------------------
+correlations: {'APH_Leakage__raw': np.float64(-0.167512), 'CO_mgm3_raw': np.float64(-0.095706), 'Dust_mgm3_raw': np.float64(-0.020217), 'Reheater_desuperheating_water_flow_th_raw': np.float64(-0.068364)}
+conclusion: Data Leakage in Raw_Only
+
+
+CONCLUSIONS:
+----------------------------------------------------------------------
+[CONC-01] Random Forest Achieves F1 = 1.0 via Data Leakage
+    Using raw features that define Anomaly_Label
+    Status: LEAKAGE
+
+[CONC-02] Isolation Forest Gives Realistic F1 = 0.232
+    Unsupervised, no label leakage
+    Status: REALISTIC
+
+[CONC-03] MLP Failed (F1 = 0.0)
+    Sensitive to class imbalance (63:1)
+    Status: FAILED
+
+[CONC-04] AdaBoost F1 = 0.988 via Leaky Features
+    Used aph_effect_leak_ratio derived from APH_Leakage
+    Status: LEAKAGE
+
+[CONC-05] Anomaly Detection is Fundamentally Hard
+    Weak correlation, high overlap, random pattern
+    Status: LIMITATION
+
+
+RECOMMENDATIONS:
+----------------------------------------------------------------------
+- Report both Leakage (upper bound) and Realistic (Isolation Forest) results
+- Acknowledge Data Leakage in the project report
+- For real deployment, use Isolation Forest or Autoencoder
+- Redefine Anomaly using statistical methods (Z-Score, IQR)

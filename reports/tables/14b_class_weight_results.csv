@@ -1,0 +1,2 @@
+Class_Weight_Name,Class_Weight_Value,Best_Epoch,Epochs_Run,Best_Val_Loss,Best_Val_Acc,Best_Val_Precision,Best_Val_Recall,Best_F1,Train_Time_s
+No_Weight,None,18,33,0.062752,0.988513,0.0,0.0,0,36.93

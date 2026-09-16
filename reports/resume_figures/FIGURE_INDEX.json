@@ -1,0 +1,55 @@
+{
+  "Project": "Boiler Efficiency Prediction and Sensor Anomaly Detection",
+  "Author": "Amin Mosallanejad",
+  "Date": "2026-09-16",
+  "Figures": [
+    {
+      "Number": 1,
+      "Title": "Project Overview Dashboard",
+      "File": "FIGURE_01_overview.png",
+      "Description": "Overview of 23 phases, model comparison, and final metrics"
+    },
+    {
+      "Number": 2,
+      "Title": "Model Comparison",
+      "File": "FIGURE_02_model_comparison.png",
+      "Description": "F1 comparison and Precision vs Recall for all models"
+    },
+    {
+      "Number": 3,
+      "Title": "Final Model Performance",
+      "File": "FIGURE_03_final_performance.png",
+      "Description": "Radar chart, confusion matrix, and metrics bar chart"
+    },
+    {
+      "Number": 4,
+      "Title": "Confusion Matrix + ROC",
+      "File": "FIGURE_04_cm_roc.png",
+      "Description": "Detailed confusion matrix and ROC curve"
+    },
+    {
+      "Number": 5,
+      "Title": "Feature Importance",
+      "File": "FIGURE_05_feature_importance.png",
+      "Description": "SHAP and Permutation Importance"
+    },
+    {
+      "Number": 6,
+      "Title": "Fairness & Robustness",
+      "File": "FIGURE_06_fairness_robustness.png",
+      "Description": "Fairness by shift and robustness across seeds"
+    },
+    {
+      "Number": 7,
+      "Title": "Learning Curve",
+      "File": "FIGURE_07_learning_curve.png",
+      "Description": "Training and validation F1 convergence"
+    },
+    {
+      "Number": 8,
+      "Title": "Data Leakage Analysis",
+      "File": "FIGURE_08_data_leakage.png",
+      "Description": "Leakage vs realistic performance and feature correlation"
+    }
+  ]
+}

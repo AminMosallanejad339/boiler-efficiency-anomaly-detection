@@ -1,0 +1,14 @@
+Metric,Value
+Phase,02 - Data Collection & Preparation
+Framework,ML Model Lifecycle - 23 Main Stages
+Original Shape,50091 x 55
+After Preparation,50091 x 55
+After Cleanup,50091 x 56
+Total Anomalies Labeled,726
+Anomaly Rate (%),1.449
+Missing Values,0
+Duplicate Rows,0
+Numeric Columns,55
+Non-Numeric Columns,1
+Memory (MB),24.27
+Processing Date,2026-09-16 12:04:40

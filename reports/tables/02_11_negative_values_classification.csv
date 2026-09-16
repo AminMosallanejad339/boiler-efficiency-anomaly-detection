@@ -1,0 +1,11 @@
+Column,Negative_Count,Negative_Pct,Category,Min,Max,Mean
+Condenser_vacuum_kPa,50091,100.0,BY_DESIGN (always negative),-93.5238,-92.2273,-92.8761
+Pressure_Kpa,50091,100.0,BY_DESIGN (always negative),-0.2708,-0.2141,-0.2425
+Pressure_Kpa_smooth3,50091,100.0,BY_DESIGN (always negative),-0.2708,-0.2141,-0.2425
+Condenser_vacuum_kPa_smooth3,50091,100.0,BY_DESIGN (always negative),-93.5238,-92.2273,-92.8761
+APH_Leakage_,388,0.775,RARE_NEGATIVE (sensor anomaly),-0.2603,4.6143,2.1755
+CO_mgm3,198,0.395,RARE_NEGATIVE (sensor anomaly),-3.9354,525.7253,260.9345
+Reheater_desuperheating_water_flow_th,142,0.283,RARE_NEGATIVE (sensor anomaly),-0.0024,5.4837,2.7427
+APH_Leakage__smooth3,95,0.19,RARE_NEGATIVE (sensor anomaly),-0.2603,4.6143,2.1756
+CO_mgm3_smooth3,18,0.036,RARE_NEGATIVE (sensor anomaly),-3.9354,525.7253,260.9347
+Reheater_desuperheating_water_flow_th_smooth3,4,0.008,RARE_NEGATIVE (sensor anomaly),-0.0024,5.4837,2.7427

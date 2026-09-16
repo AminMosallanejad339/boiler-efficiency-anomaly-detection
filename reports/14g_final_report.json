@@ -1,0 +1,130 @@
+{
+  "Phase": "14g - Finalize Anomaly Detection",
+  "Date": "2026-09-16 14:25:18",
+  "Models": [
+    {
+      "Model": "Random_Forest",
+      "Feature_Set": "Raw_Only",
+      "Dataset": "Val",
+      "N_Features": 4,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "ROC_AUC": 1.0,
+      "PR_AUC": 1.0
+    },
+    {
+      "Model": "Random_Forest",
+      "Feature_Set": "Raw_Only",
+      "Dataset": "Test",
+      "N_Features": 4,
+      "Precision": 1.0,
+      "Recall": 1.0,
+      "F1": 1.0,
+      "ROC_AUC": 1.0,
+      "PR_AUC": 1.0
+    },
+    {
+      "Model": "Isolation_Forest",
+      "Feature_Set": "Raw_Only",
+      "Dataset": "Val",
+      "N_Features": 4,
+      "Precision": 0.099723,
+      "Recall": 0.418605,
+      "F1": 0.161074,
+      "ROC_AUC": 0.939725,
+      "PR_AUC": 0.11278
+    },
+    {
+      "Model": "Isolation_Forest",
+      "Feature_Set": "Raw_Only",
+      "Dataset": "Test",
+      "N_Features": 4,
+      "Precision": 0.15445,
+      "Recall": 0.464567,
+      "F1": 0.231827,
+      "ROC_AUC": 0.945617,
+      "PR_AUC": 0.203608
+    },
+    {
+      "Model": "MLP",
+      "Feature_Set": "Main_Plus_Raw",
+      "Dataset": "Val",
+      "N_Features": 78,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1": 0.0,
+      "ROC_AUC": 0.506501,
+      "PR_AUC": 0.011433
+    },
+    {
+      "Model": "MLP",
+      "Feature_Set": "Main_Plus_Raw",
+      "Dataset": "Test",
+      "N_Features": 78,
+      "Precision": 0.0,
+      "Recall": 0.0,
+      "F1": 0.0,
+      "ROC_AUC": 0.51985,
+      "PR_AUC": 0.018514
+    },
+    {
+      "Model": "AdaBoost (Leaky)",
+      "Feature_Set": "Main_Only_Leaky",
+      "Dataset": "Val",
+      "N_Features": 78,
+      "Precision": 1.0,
+      "Recall": 0.976744,
+      "F1": 0.988235,
+      "ROC_AUC": 0.99998,
+      "PR_AUC": 0.997605
+    }
+  ],
+  "Data_Leakage_Analysis": {
+    "correlations": {
+      "APH_Leakage__raw": -0.167512,
+      "CO_mgm3_raw": -0.095706,
+      "Dust_mgm3_raw": -0.020217,
+      "Reheater_desuperheating_water_flow_th_raw": -0.068364
+    },
+    "conclusion": "Data Leakage in Raw_Only"
+  },
+  "Conclusions": [
+    {
+      "ID": "CONC-01",
+      "Title": "Random Forest Achieves F1 = 1.0 via Data Leakage",
+      "Description": "Using raw features that define Anomaly_Label",
+      "Status": "LEAKAGE"
+    },
+    {
+      "ID": "CONC-02",
+      "Title": "Isolation Forest Gives Realistic F1 = 0.232",
+      "Description": "Unsupervised, no label leakage",
+      "Status": "REALISTIC"
+    },
+    {
+      "ID": "CONC-03",
+      "Title": "MLP Failed (F1 = 0.0)",
+      "Description": "Sensitive to class imbalance (63:1)",
+      "Status": "FAILED"
+    },
+    {
+      "ID": "CONC-04",
+      "Title": "AdaBoost F1 = 0.988 via Leaky Features",
+      "Description": "Used aph_effect_leak_ratio derived from APH_Leakage",
+      "Status": "LEAKAGE"
+    },
+    {
+      "ID": "CONC-05",
+      "Title": "Anomaly Detection is Fundamentally Hard",
+      "Description": "Weak correlation, high overlap, random pattern",
+      "Status": "LIMITATION"
+    }
+  ],
+  "Recommendations": [
+    "Report both Leakage (upper bound) and Realistic (Isolation Forest) results",
+    "Acknowledge Data Leakage in the project report",
+    "For real deployment, use Isolation Forest or Autoencoder",
+    "Redefine Anomaly using statistical methods (Z-Score, IQR)"
+  ]
+}

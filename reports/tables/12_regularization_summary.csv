@@ -1,0 +1,12 @@
+Parameter,Value
+Best_Experiment,Low_Reg
+Best_L2,1e-05
+Best_Dropout,"(0.2, 0.2, 0.1)"
+Best_Patience,15
+Best_Val_Loss,0.065496
+Best_Val_Acc,0.988513
+Best_Overfit,-0.483537
+Optimizer,RMSprop
+LR_Schedule,ReduceLROnPlateau
+Batch_Size,256
+Max_Epochs,100

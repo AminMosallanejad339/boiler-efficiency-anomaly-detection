@@ -1,0 +1,11 @@
+Parameter,Value
+Best_n_estimators,300
+Best_max_samples,0.9
+Best_contamination,0.02
+Best_max_features,0.5
+Best_bootstrap,False
+Best_F1,0.310345
+Best_Precision,0.246575
+Best_Recall,0.418605
+Stability_Std,0.02011
+Stability_Status,STABLE

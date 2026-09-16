@@ -1,0 +1,62 @@
+[2026-09-16 12:04:38] ======================================================================
+[2026-09-16 12:04:38] PHASE 02: FINAL CLEANUP & ANOMALY LABELING
+[2026-09-16 12:04:38] ======================================================================
+[2026-09-16 12:04:38] Loaded: 50091 rows x 109 columns
+[2026-09-16 12:04:38] 
+======================================================================
+[2026-09-16 12:04:38] DECISION 1: BY_DESIGN NEGATIVE COLUMNS
+[2026-09-16 12:04:38] ======================================================================
+[2026-09-16 12:04:38]   [KEEP] Condenser_vacuum_kPa: always negative by design (vacuum / differential pressure)
+[2026-09-16 12:04:38]   [KEEP] Pressure_Kpa: always negative by design (vacuum / differential pressure)
+[2026-09-16 12:04:38] 
+======================================================================
+[2026-09-16 12:04:38] DECISION 2: ANOMALY LABELING
+[2026-09-16 12:04:38] ======================================================================
+[2026-09-16 12:04:38] Anomaly source columns found: ['APH_Leakage_', 'CO_mgm3', 'Reheater_desuperheating_water_flow_th', 'Dust_mgm3']
+[2026-09-16 12:04:38]   APH_Leakage_: 388 negative values
+[2026-09-16 12:04:38]   CO_mgm3: 198 negative values
+[2026-09-16 12:04:38]   Reheater_desuperheating_water_flow_th: 142 negative values
+[2026-09-16 12:04:38]   Dust_mgm3: 0 negative values
+[2026-09-16 12:04:38] 
+  Total anomalies labeled: 726 (1.449%)
+[2026-09-16 12:04:38]   Normal records: 49365
+[2026-09-16 12:04:38] 
+======================================================================
+[2026-09-16 12:04:38] DECISION 3: REMOVE SMOOTH COLUMNS
+[2026-09-16 12:04:38] ======================================================================
+[2026-09-16 12:04:38] Smooth columns found: 54
+[2026-09-16 12:04:38]   [OK] Removed 54 smooth columns
+[2026-09-16 12:04:38]   Rationale: mean correlation with original = 0.9769 (Multicollinearity)
+[2026-09-16 12:04:38] Shape after removal: (50091, 56)
+[2026-09-16 12:04:38] 
+======================================================================
+[2026-09-16 12:04:38] DECISION 4: OUTLIER TREATMENT CONFIRMATION
+[2026-09-16 12:04:38] ======================================================================
+[2026-09-16 12:04:38]   [CONFIRMED] Winsorization (IQR capping at 1.5*IQR)
+[2026-09-16 12:04:38]   All 54 columns had < 5% outliers and were capped
+[2026-09-16 12:04:38] 
+======================================================================
+[2026-09-16 12:04:38] SAVING FINAL DATASET
+[2026-09-16 12:04:38] ======================================================================
+[2026-09-16 12:04:40] [OK] Saved: E:\DESKTOP\boiler-efficiency-anomaly-detection\data\processed\industrial_dataset_phase02_final.csv
+[2026-09-16 12:04:40] [OK] Final shape: (50091, 56)
+[2026-09-16 12:04:40] 
+======================================================================
+[2026-09-16 12:04:40] FINAL DATA QUALITY REPORT
+[2026-09-16 12:04:40] ======================================================================
+[2026-09-16 12:04:40]   Phase: 02 - Data Collection & Preparation
+[2026-09-16 12:04:40]   Framework: ML Model Lifecycle - 23 Main Stages
+[2026-09-16 12:04:40]   Original Shape: 50091 x 55
+[2026-09-16 12:04:40]   After Preparation: 50091 x 55
+[2026-09-16 12:04:40]   After Cleanup: 50091 x 56
+[2026-09-16 12:04:40]   Total Anomalies Labeled: 726
+[2026-09-16 12:04:40]   Anomaly Rate (%): 1.449
+[2026-09-16 12:04:40]   Missing Values: 0
+[2026-09-16 12:04:40]   Duplicate Rows: 0
+[2026-09-16 12:04:40]   Numeric Columns: 55
+[2026-09-16 12:04:40]   Non-Numeric Columns: 1
+[2026-09-16 12:04:40]   Memory (MB): 24.27
+[2026-09-16 12:04:40]   Processing Date: 2026-09-16 12:04:40
+[2026-09-16 12:04:40] 
+[OK] Saved: 02_15_final_quality_report.csv
+[2026-09-16 12:04:40] [OK] Saved: 02_16_phase02_decisions.csv

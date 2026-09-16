@@ -1,0 +1,22 @@
+{
+  "Version": "v1.0.0",
+  "Release_Date": "2026-09-16 15:03:00",
+  "Changes": [
+    "Initial release",
+    "Isolation Forest with tuned hyperparameters",
+    "n_estimators=300, max_samples=0.9, contamination=0.02",
+    "max_features=0.5, bootstrap=False"
+  ],
+  "Previous_Versions": [],
+  "Compatibility": {
+    "Python": ">=3.9",
+    "scikit-learn": ">=1.3",
+    "numpy": ">=1.24",
+    "pandas": ">=2.0"
+  },
+  "Artifacts": {
+    "Model": "isolation_forest_tuned.pkl",
+    "Documentation": "model_documentation.json",
+    "Model_Card": "model_card.md"
+  }
+}

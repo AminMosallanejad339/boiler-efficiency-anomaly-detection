@@ -1,0 +1,69 @@
+{
+  "Model_Name": "Anomaly Detection - Isolation Forest (Tuned)",
+  "Model_Version": "v1.0.0",
+  "Model_Type": "Unsupervised Anomaly Detection",
+  "Algorithm": "Isolation Forest",
+  "Framework": "scikit-learn",
+  "Created_Date": "2026-09-16",
+  "Author": "Amin Mosallanejad",
+  "Project": "Boiler Efficiency Prediction and Sensor Anomaly Detection",
+  "Model_Parameters": {
+    "n_estimators": 300,
+    "max_samples": 0.9,
+    "contamination": 0.02,
+    "max_features": 0.5,
+    "bootstrap": false,
+    "random_state": 42
+  },
+  "Input_Features": [
+    "APH_Leakage__raw",
+    "CO_mgm3_raw",
+    "Dust_mgm3_raw",
+    "Reheater_desuperheating_water_flow_th_raw"
+  ],
+  "Output": {
+    "Type": "Binary Classification",
+    "Classes": [
+      "Normal (0)",
+      "Anomaly (1)"
+    ],
+    "Threshold": "Based on contamination=0.02"
+  },
+  "Performance_Metrics_Test": {
+    "F1": 0.44375,
+    "Precision": 0.367876,
+    "Recall": 0.559055,
+    "Accuracy": 0.976311,
+    "FPR": 0.016516,
+    "FNR": 0.440945
+  },
+  "Performance_Metrics_Val": {
+    "F1": 0.310345,
+    "Precision": 0.246575,
+    "Recall": 0.418605
+  },
+  "Robustness": {
+    "F1_Std_Across_Seeds": 0.035615,
+    "Stability": "ROBUST"
+  },
+  "Fairness": {
+    "F1_Std_Across_Shifts": 0.052192,
+    "Status": "FAIR"
+  },
+  "Limitations": [
+    "F1 = 0.4437 (not perfect)",
+    "Recall = 0.5591 (55.9% detected)",
+    "Precision = 0.3679 (36.8% correct)",
+    "F1 varies by month (Std = 0.0877)",
+    "F1 varies by shift (Range = 0.1259)",
+    "F1 Std across seeds = 0.0356",
+    "RF with Raw_Only achieves F1=1.0 (Leakage)",
+    "Isolation Forest is Unsupervised (no labels)",
+    "Only 4 raw anomaly features",
+    "63:1 class imbalance"
+  ],
+  "Data_Source": "Kaggle - Power Plant Data (Synthetic/Anonymized)",
+  "Training_Samples": 35063,
+  "Validation_Samples": 7487,
+  "Test_Samples": 7514
+}

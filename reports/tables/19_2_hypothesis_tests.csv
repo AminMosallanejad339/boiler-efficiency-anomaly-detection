@@ -1,0 +1,8 @@
+Hypothesis,Description,Test,Statistic,p_value,Reject_H0,Conclusion
+H1,Boiler_Eff_ predictable (Regression),R2 Score,R2 < 0,,True,REJECTED - Not predictable
+H2,Lower O2 reduces Boiler_Eff_,Pearson Correlation,-0.015863,0.0029728088943150864,True,REJECTED
+H3,Higher Flue Gas Temp reduces Boiler_Eff_,Pearson Correlation,-0.003278,0.5393698160200336,False,FAIL TO REJECT
+H4,Higher APH Leakage reduces Boiler_Eff_,Pearson Correlation,0.000582,0.9132236856040936,False,FAIL TO REJECT
+H5,Negative CO indicates Anomaly,Chi-Square,9640.383807,0.0,True,REJECTED
+H6,Coal Flow correlates with Boiler_Eff_,Pearson Correlation,0.009698,0.0693862990766308,False,FAIL TO REJECT
+H7,Boiler_Eff_ differs across shifts,ANOVA,8.866139,7.179956929910409e-06,True,REJECTED

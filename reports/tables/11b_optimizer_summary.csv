@@ -1,0 +1,13 @@
+Parameter,Value
+Anomaly_Best_Optimizer,RMSprop
+Anomaly_Val_Loss,0.375188
+Anomaly_Val_Acc,0.988513
+Binned_Best_Optimizer,Adam
+Binned_Val_Loss,1.120638
+Binned_Val_Acc,0.332844
+Default_LR,0.001
+LR_Schedule,ReduceLROnPlateau
+Gradient_Clipping,Clip by Norm = 1.0
+Batch_Size,256
+Max_Epochs,100
+EarlyStopping_Patience,10

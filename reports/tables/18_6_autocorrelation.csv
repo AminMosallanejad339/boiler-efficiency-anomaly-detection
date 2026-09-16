@@ -1,0 +1,8 @@
+Metric,Value
+durbin_watson,0.0024475143886642835
+lb_lag10_stat,13796.895194054252
+lb_lag10_p,0.0
+lb_lag20_stat,13815.038764412548
+lb_lag20_p,0.0
+lb_lag30_stat,13828.602467406134
+lb_lag30_p,0.0

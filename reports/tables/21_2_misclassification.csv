@@ -1,0 +1,17 @@
+Metric,Value
+FN_Count,56.0
+FP_Count,122.0
+TP_Count,71.0
+TN_Count,7265.0
+FN_APH_Leakage__raw_mean,0.61305
+FP_APH_Leakage__raw_mean,2.334791
+TP_APH_Leakage__raw_mean,1.138935
+FN_CO_mgm3_raw_mean,192.765759
+FP_CO_mgm3_raw_mean,294.315193
+TP_CO_mgm3_raw_mean,209.98444
+FN_Dust_mgm3_raw_mean,14.019864
+FP_Dust_mgm3_raw_mean,13.555245
+TP_Dust_mgm3_raw_mean,12.703504
+FN_Reheater_desuperheating_water_flow_th_raw_mean,2.590063
+FP_Reheater_desuperheating_water_flow_th_raw_mean,3.012138
+TP_Reheater_desuperheating_water_flow_th_raw_mean,1.845935

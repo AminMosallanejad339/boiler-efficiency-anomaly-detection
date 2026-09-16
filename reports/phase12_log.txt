@@ -1,0 +1,218 @@
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21] PHASE 12: REGULARIZATION
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21] PHASE 12: REGULARIZATION
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] STAGE 12.1: REGULARIZATION SELECTION
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21] 
+  L1 Regularization:
+[2026-09-16 13:21:21]     Formula: R(W) = λ * sum(|W|)
+[2026-09-16 13:21:21]     Effect: Sparse weights, feature selection
+[2026-09-16 13:21:21]     Pros: Automatic feature selection
+[2026-09-16 13:21:21]     Cons: Non-differentiable at 0
+[2026-09-16 13:21:21] 
+  L2 Regularization:
+[2026-09-16 13:21:21]     Formula: R(W) = λ * sum(W^2)
+[2026-09-16 13:21:21]     Effect: Small weights, smooth
+[2026-09-16 13:21:21]     Pros: Differentiable, stable
+[2026-09-16 13:21:21]     Cons: No feature selection
+[2026-09-16 13:21:21] 
+  Elastic Net:
+[2026-09-16 13:21:21]     Formula: R(W) = λ1*sum(|W|) + λ2*sum(W^2)
+[2026-09-16 13:21:21]     Effect: Combines L1 and L2
+[2026-09-16 13:21:21]     Pros: Best of both
+[2026-09-16 13:21:21]     Cons: More hyperparameters
+[2026-09-16 13:21:21] 
+  Dropout:
+[2026-09-16 13:21:21]     Formula: Randomly zero activations during training
+[2026-09-16 13:21:21]     Effect: Prevents co-adaptation
+[2026-09-16 13:21:21]     Pros: Effective, simple
+[2026-09-16 13:21:21]     Cons: Slower training
+[2026-09-16 13:21:21] 
+  Early Stopping:
+[2026-09-16 13:21:21]     Formula: Stop when val_loss stops improving
+[2026-09-16 13:21:21]     Effect: Prevents overfitting
+[2026-09-16 13:21:21]     Pros: Simple, effective
+[2026-09-16 13:21:21]     Cons: Needs validation set
+[2026-09-16 13:21:21] 
+  Weight Decay:
+[2026-09-16 13:21:21]     Formula: θ = θ - lr*(gradient + λ*θ)
+[2026-09-16 13:21:21]     Effect: Shrinks weights
+[2026-09-16 13:21:21]     Pros: Simple
+[2026-09-16 13:21:21]     Cons: Similar to L2
+[2026-09-16 13:21:21] 
+  Label Smoothing:
+[2026-09-16 13:21:21]     Formula: y_smooth = (1-ε)*y + ε/K
+[2026-09-16 13:21:21]     Effect: Soft labels
+[2026-09-16 13:21:21]     Pros: Better calibration
+[2026-09-16 13:21:21]     Cons: For classification only
+[2026-09-16 13:21:21] 
+  Data Augmentation:
+[2026-09-16 13:21:21]     Formula: Generate synthetic samples
+[2026-09-16 13:21:21]     Effect: More training data
+[2026-09-16 13:21:21]     Pros: Better generalization
+[2026-09-16 13:21:21]     Cons: Not for tabular easily
+[2026-09-16 13:21:21] 
+  [SELECTED] L2 + Dropout + EarlyStopping
+[2026-09-16 13:21:21]   Rationale: Proven combination for tabular MLPs
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] STAGE 12.2-12.4: L1, L2, ELASTIC NET SETUP
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21] 
+  L1:
+[2026-09-16 13:21:21]     λ: 1e-5 to 1e-3
+[2026-09-16 13:21:21]     Selected: Not used (no feature selection needed)
+[2026-09-16 13:21:21] 
+  L2:
+[2026-09-16 13:21:21]     λ: 1e-4 (baseline)
+[2026-09-16 13:21:21]     Range to Test: [1e-05, 0.0001, 0.001, 0.01]
+[2026-09-16 13:21:21]     Selected: 1e-4 (to be tuned)
+[2026-09-16 13:21:21] 
+  Elastic Net:
+[2026-09-16 13:21:21]     λ1: Not used
+[2026-09-16 13:21:21]     λ2: Not used
+[2026-09-16 13:21:21]     Rationale: L2 alone is sufficient
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] STAGE 12.5: DROPOUT SETUP
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21]   Baseline: {'Layer 1': 0.3, 'Layer 2': 0.3, 'Layer 3': 0.2}
+[2026-09-16 13:21:21]   Low Dropout: {'Layer 1': 0.2, 'Layer 2': 0.2, 'Layer 3': 0.1}
+[2026-09-16 13:21:21]   High Dropout: {'Layer 1': 0.5, 'Layer 2': 0.5, 'Layer 3': 0.3}
+[2026-09-16 13:21:21]   No Dropout: {'Layer 1': 0.0, 'Layer 2': 0.0, 'Layer 3': 0.0}
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] STAGE 12.6: EARLY STOPPING SETUP
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21]   Monitor: val_loss
+[2026-09-16 13:21:21]   Patience: [5, 10, 15, 20]
+[2026-09-16 13:21:21]   Baseline: 10
+[2026-09-16 13:21:21]   Restore Best Weights: True
+[2026-09-16 13:21:21]   Min Delta: 0.0001
+[2026-09-16 13:21:21]   Rationale: ['Prevents overfitting', 'Saves training time', 'Patience=10 is good balance']
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] STAGE 12.7: WEIGHT DECAY SETUP
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21]   [INFO] Weight Decay is equivalent to L2 Regularization
+[2026-09-16 13:21:21]   [INFO] AdamW uses decoupled weight decay
+[2026-09-16 13:21:21]   [INFO] For RMSprop, use L2 regularization in layers
+[2026-09-16 13:21:21]   [DECISION] Use L2 regularization in Dense layers (not AdamW)
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] STAGE 12.8: DATA AUGMENTATION SETUP
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21]   [INFO] Data Augmentation for tabular data:
+[2026-09-16 13:21:21]     - SMOTE (Synthetic Minority Oversampling)
+[2026-09-16 13:21:21]     - ADASYN (Adaptive Synthetic Sampling)
+[2026-09-16 13:21:21]     - Gaussian Noise Injection
+[2026-09-16 13:21:21]     - Mixup
+[2026-09-16 13:21:21]   [DECISION] Use Class Weight instead of SMOTE (simpler)
+[2026-09-16 13:21:21]   [NOTE] SMOTE will be tested in Phase 13 (Hyperparameters)
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] STAGE 12.9: LABEL SMOOTHING SETUP
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21]   Enabled: False
+[2026-09-16 13:21:21]   Epsilon: 0.1
+[2026-09-16 13:21:21]   Rationale:
+[2026-09-16 13:21:21]     - Label smoothing for binary classification is marginal
+[2026-09-16 13:21:21]     - More useful for multi-class with noisy labels
+[2026-09-16 13:21:21]     - Anomaly labels are deterministic (from CO, APH)
+[2026-09-16 13:21:21]   If Enabled:
+[2026-09-16 13:21:21]     Formula: y_smooth = (1-ε)*y + ε/2
+[2026-09-16 13:21:21]     Effect: Soft labels, better calibration
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] STAGE 12.10: ENSEMBLE SETUP
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21]   Enabled: False
+[2026-09-16 13:21:21]   Reason: Single MLP is sufficient for this task
+[2026-09-16 13:21:21]   Alternatives:
+[2026-09-16 13:21:21]     Bagging: Train multiple MLPs with different seeds
+[2026-09-16 13:21:21]     Boosting: Already have AdaBoost
+[2026-09-16 13:21:21]     Stacking: Combine MLP + AdaBoost
+[2026-09-16 13:21:21]   If Enabled:
+[2026-09-16 13:21:21]     N_Models: 5
+[2026-09-16 13:21:21]     Aggregation: Average probabilities
+[2026-09-16 13:21:21] 
+  Features: 78
+[2026-09-16 13:21:21]   Class Weight: {0: 1.0, 1: np.float64(63.57274401473296)}
+[2026-09-16 13:21:21] 
+======================================================================
+[2026-09-16 13:21:21] RUNNING REGULARIZATION EXPERIMENTS
+[2026-09-16 13:21:21] ======================================================================
+[2026-09-16 13:21:21] 
+  Running Baseline...
+[2026-09-16 13:21:21]     L2=0.0001, Dropout=(0.3, 0.3, 0.2), Patience=10
+[2026-09-16 13:21:32]     Epochs: 33 (best: 23)
+[2026-09-16 13:21:32]     Best Val Loss: 0.073772
+[2026-09-16 13:21:32]     Final Val Acc: 0.988513
+[2026-09-16 13:21:32]     Overfit: -0.509518
+[2026-09-16 13:21:32]     Time: 11.26s
+[2026-09-16 13:21:32] 
+  Running Low_Reg...
+[2026-09-16 13:21:32]     L2=1e-05, Dropout=(0.2, 0.2, 0.1), Patience=15
+[2026-09-16 13:21:38]     Epochs: 16 (best: 1)
+[2026-09-16 13:21:38]     Best Val Loss: 0.065496
+[2026-09-16 13:21:38]     Final Val Acc: 0.988513
+[2026-09-16 13:21:38]     Overfit: -0.483537
+[2026-09-16 13:21:38]     Time: 5.95s
+[2026-09-16 13:21:38] 
+  Running High_Reg...
+[2026-09-16 13:21:38]     L2=0.001, Dropout=(0.5, 0.5, 0.3), Patience=5
+[2026-09-16 13:21:43]     Epochs: 9 (best: 4)
+[2026-09-16 13:21:43]     Best Val Loss: 0.150395
+[2026-09-16 13:21:43]     Final Val Acc: 0.988513
+[2026-09-16 13:21:43]     Overfit: -0.518930
+[2026-09-16 13:21:43]     Time: 4.32s
+[2026-09-16 13:21:43] 
+  Running No_Reg...
+[2026-09-16 13:21:43]     L2=0.0, Dropout=(0.0, 0.0, 0.0), Patience=20
+[2026-09-16 13:22:04]     Epochs: 33 (best: 13)
+[2026-09-16 13:22:04]     Best Val Loss: 0.070941
+[2026-09-16 13:22:04]     Final Val Acc: 0.011487
+[2026-09-16 13:22:04]     Overfit: 0.527572
+[2026-09-16 13:22:04]     Time: 20.87s
+[2026-09-16 13:22:04] 
+  Running Medium_Reg...
+[2026-09-16 13:22:04]     L2=0.0005, Dropout=(0.4, 0.4, 0.2), Patience=10
+[2026-09-16 13:22:14]     Epochs: 27 (best: 17)
+[2026-09-16 13:22:14]     Best Val Loss: 0.086615
+[2026-09-16 13:22:14]     Final Val Acc: 0.988513
+[2026-09-16 13:22:14]     Overfit: -0.528085
+[2026-09-16 13:22:14]     Time: 10.32s
+[2026-09-16 13:22:14]   [OK] Saved: 12_regularization_comparison.csv
+[2026-09-16 13:22:14] 
+  Regularization Ranking (by Best Val Loss):
+[2026-09-16 13:22:14]     Low_Reg: Best Val Loss=0.065496, Val Acc=0.988513, Overfit=-0.483537, Epochs=16
+[2026-09-16 13:22:14]     No_Reg: Best Val Loss=0.070941, Val Acc=0.011487, Overfit=0.527572, Epochs=33
+[2026-09-16 13:22:14]     Baseline: Best Val Loss=0.073772, Val Acc=0.988513, Overfit=-0.509518, Epochs=33
+[2026-09-16 13:22:14]     Medium_Reg: Best Val Loss=0.086615, Val Acc=0.988513, Overfit=-0.528085, Epochs=27
+[2026-09-16 13:22:14]     High_Reg: Best Val Loss=0.150395, Val Acc=0.988513, Overfit=-0.518930, Epochs=9
+[2026-09-16 13:22:14] 
+======================================================================
+[2026-09-16 13:22:14] VISUALIZING REGULARIZATION RESULTS
+[2026-09-16 13:22:14] ======================================================================
+[2026-09-16 13:22:14]   [OK] Saved: 12_regularization_results.png
+[2026-09-16 13:22:14] 
+======================================================================
+[2026-09-16 13:22:14] REGULARIZATION SELECTION SUMMARY
+[2026-09-16 13:22:14] ======================================================================
+[2026-09-16 13:22:14]   Best Experiment: Low_Reg
+[2026-09-16 13:22:14]   L2: 1e-05
+[2026-09-16 13:22:14]   Dropout: (0.2, 0.2, 0.1)
+[2026-09-16 13:22:14]   Patience: 15
+[2026-09-16 13:22:14]   Best Val Loss: 0.065496
+[2026-09-16 13:22:14]   Final Val Acc: 0.988513
+[2026-09-16 13:22:14]   Overfit: -0.483537
+[2026-09-16 13:22:14]   [OK] Saved: 12_regularization_summary.csv
+[2026-09-16 13:22:14] 
+======================================================================
+[2026-09-16 13:22:14] PHASE 12 COMPLETE!
+[2026-09-16 13:22:14] ======================================================================

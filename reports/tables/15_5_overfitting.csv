@@ -1,0 +1,4 @@
+Model,Train_F1,Val_F1,F1_Gap,Train_Loss,Val_Loss,Loss_Gap,Status
+Random_Forest,1.0,1.0,0.0,0.000478,0.000499,2.1e-05,OK
+Isolation_Forest,0.217675,0.161074,0.056601,0.266669,0.329859,0.06319,OK
+MLP,0.0,0.0,0.0,0.080685,0.062711,-0.017974,OK

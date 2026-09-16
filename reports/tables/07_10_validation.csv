@@ -1,0 +1,7 @@
+Assumption,Status,Implication
+Linearity,NOT SATISFIED,"Use non-linear models (RF, XGBoost)"
+Normality,NOT SATISFIED,Use non-parametric tests
+Independence,NOT SATISFIED,Autocorrelation present
+Homoscedasticity,SATISFIED,Use robust standard errors
+Multicollinearity,NOT SATISFIED (16 features),Remove high-VIF features
+Stationarity,SATISFIED,Apply differencing if needed

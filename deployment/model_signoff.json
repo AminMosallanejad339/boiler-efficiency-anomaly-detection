@@ -1,0 +1,38 @@
+{
+  "Project": "Boiler Efficiency Prediction and Sensor Anomaly Detection",
+  "Model": "Isolation Forest (Tuned)",
+  "Version": "v1.0.0",
+  "Sign_Off_Date": "2026-09-16 15:03:00",
+  "Signed_By": "Amin Mosallanejad",
+  "Status": "SIGNED_OFF",
+  "Artifacts": {
+    "Model": "anomaly_model_v1.0.0.pkl",
+    "Model_Hash": "13217b205922802c",
+    "Documentation": "model_documentation.json",
+    "Model_Card": "model_card.md",
+    "Version": "model_version.json",
+    "Approval": "model_approval.json",
+    "Governance": "model_governance.json",
+    "Compliance": "model_compliance.json"
+  },
+  "Final_Performance": {
+    "F1": 0.44375,
+    "ROC_AUC": 0.971015,
+    "Precision": 0.367876,
+    "Recall": 0.559055
+  },
+  "Deployment_Readiness": {
+    "Model_Trained": true,
+    "Model_Frozen": true,
+    "Documentation_Complete": true,
+    "Compliance_Checked": true,
+    "Governance_Defined": true,
+    "Status": "READY_FOR_DEPLOYMENT"
+  },
+  "Notes": [
+    "Model is for educational/research purposes",
+    "Data license needs review for commercial use",
+    "Human oversight recommended for production",
+    "Retraining every 6 months or on performance drop"
+  ]
+}

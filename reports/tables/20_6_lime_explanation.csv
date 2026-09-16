@@ -1,0 +1,5 @@
+Feature_Condition,Weight
+CO_mgm3_raw <= 193.83,0.06230088924524573
+Reheater_desuperheating_water_flow_th_raw > 3.42,0.06187979062003163
+11.36 < Dust_mgm3_raw <= 14.46,-0.054837834727120546
+1.56 < APH_Leakage__raw <= 2.17,-0.0517619670778107

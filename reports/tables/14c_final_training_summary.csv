@@ -1,0 +1,13 @@
+Parameter,Value
+Best_Class_Weight,No_Weight
+Best_Class_Weight_Value,None
+Best_Epoch,19
+Best_Val_Loss,0.062753
+Best_Val_Acc,0.988513
+Best_Val_Precision,0.0
+Best_Val_Recall,0.0
+Best_F1,0.0
+Total_Params,17313
+Epochs_Run,39
+Total_Features,78
+Raw_Anomaly_Features,"APH_Leakage__raw, CO_mgm3_raw, Dust_mgm3_raw, Reheater_desuperheating_water_flow_th_raw"

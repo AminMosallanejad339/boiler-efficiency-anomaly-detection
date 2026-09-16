@@ -1,0 +1,12 @@
+Key,Value
+Dataset_Name,Power Plant Data: Steam Turbine & Boiler Metrics
+Source,Kaggle - Pavanjit Subash
+Original_Rows,50091
+Original_Columns,55
+Final_Columns,58
+Time_Range,January 2022
+Time_Resolution,10 minutes
+Anomaly_Count,756
+Anomaly_Rate,1.5093
+Phase,03 - Data Transformation & Encoding
+Date,2026-09-16

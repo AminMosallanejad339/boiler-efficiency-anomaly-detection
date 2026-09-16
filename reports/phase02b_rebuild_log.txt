@@ -1,0 +1,40 @@
+[2026-09-16 12:07:42] ======================================================================
+[2026-09-16 12:07:42] PHASE 02b: REBUILD ANOMALY LABEL FROM RAW DATA
+[2026-09-16 12:07:42] ======================================================================
+[2026-09-16 12:07:42] Raw data loaded: (50091, 55)
+[2026-09-16 12:07:43] Clean data loaded: (50091, 56)
+[2026-09-16 12:07:43] Raw columns standardized
+[2026-09-16 12:07:43] 
+Anomaly source columns in RAW data: ['APH_Leakage_', 'CO_mgm3', 'Reheater_desuperheating_water_flow_th', 'Dust_mgm3']
+[2026-09-16 12:07:43] 
+======================================================================
+[2026-09-16 12:07:43] REBUILDING ANOMALY LABEL FROM RAW DATA
+[2026-09-16 12:07:43] ======================================================================
+[2026-09-16 12:07:43]   APH_Leakage_: 388 negative values (0.7746%)
+[2026-09-16 12:07:43]   CO_mgm3: 198 negative values (0.3953%)
+[2026-09-16 12:07:43]   Reheater_desuperheating_water_flow_th: 142 negative values (0.2835%)
+[2026-09-16 12:07:43]   Dust_mgm3: 31 negative values (0.0619%)
+[2026-09-16 12:07:43] 
+======================================================================
+[2026-09-16 12:07:43] COMPARISON: OLD vs NEW ANOMALY LABEL
+[2026-09-16 12:07:43] ======================================================================
+[2026-09-16 12:07:43]   Old Anomaly_Label count: 726 (1.4494%)
+[2026-09-16 12:07:43]   New Anomaly_Label count: 756 (1.5093%)
+[2026-09-16 12:07:43]   Difference: 30
+[2026-09-16 12:07:43] 
+  Cross-tabulation:
+[2026-09-16 12:07:43]     Both labeled anomaly:     726
+[2026-09-16 12:07:43]     Only OLD labeled anomaly: 0
+[2026-09-16 12:07:43]     Only NEW labeled anomaly: 30
+[2026-09-16 12:07:43]     Neither:                  49335
+[2026-09-16 12:07:43] 
+  [OK] Saved: 02b_anomaly_label_comparison.csv
+[2026-09-16 12:07:43] 
+======================================================================
+[2026-09-16 12:07:43] UPDATING DATASET WITH NEW ANOMALY LABEL
+[2026-09-16 12:07:43] ======================================================================
+[2026-09-16 12:07:43]   [OK] Anomaly_Label updated: 756 anomalies (1.5093%)
+[2026-09-16 12:07:44] 
+[OK] Saved: E:\DESKTOP\boiler-efficiency-anomaly-detection\data\processed\industrial_dataset_phase02_final_v2.csv
+[2026-09-16 12:07:44] [OK] Final shape: (50091, 56)
+[2026-09-16 12:07:44] [OK] Saved: 02b_anomaly_sources_details.csv

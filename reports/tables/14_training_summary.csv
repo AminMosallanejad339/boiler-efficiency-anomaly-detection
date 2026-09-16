@@ -1,0 +1,25 @@
+Parameter,Value
+Model,Anomaly MLP
+Optimizer,RMSprop
+Learning_Rate,0.002347
+Batch_Size,256
+L2,1.9777828512462736e-07
+Dropout_1,0.243
+Dropout_2,0.146
+Dropout_3,0.345
+Hidden_1,128
+Hidden_2,32
+Hidden_3,64
+Patience,20
+Total_Params,17313
+Epochs_Run,24
+Best_Epoch,4
+Best_Val_Loss,0.065096
+Best_Val_Acc,0.988513
+Final_Train_Loss,1.372823
+Final_Val_Loss,0.42936
+Final_Train_Acc,0.401477
+Final_Val_Acc,0.988513
+Overfit,-0.587036
+Train_Time_s,24.59
+Class_Weight,"{0: 1.0, 1: np.float64(63.57274401473296)}"

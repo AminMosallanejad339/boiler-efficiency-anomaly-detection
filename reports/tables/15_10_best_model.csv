@@ -1,0 +1,7 @@
+Parameter,Value
+Best_Val_F1_Model,Random_Forest
+Best_Val_F1,1.0
+Best_Realistic_Model,Isolation_Forest
+Best_Realistic_F1,0.161074
+Deployment_Recommendation,Isolation Forest (Unsupervised)
+Rationale,"No Data Leakage, Realistic Performance"
