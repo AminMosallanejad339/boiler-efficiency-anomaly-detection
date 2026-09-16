@@ -755,7 +755,7 @@ else:
 
 - Email: mosallanejadamin1400@gmail.com
 - LinkedIn: [amin-mosallanejad](https://linkedin.com/in/amin-mosallanejad)
-- GitHub: [AminMosallanejad](https://github.com/AminMosallanejad)
+- GitHub: [AminMosallanejad]([https://github.com/AminMosallanejad](https://aminmosallanejad339.github.io/bio-data/))
 
 ---
 
